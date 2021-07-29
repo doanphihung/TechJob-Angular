@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
@@ -10,10 +10,15 @@ const API_URL = `${environment.apiUrl}`;
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public employerRegister(data: any): Observable<any> {
     return this.http.post(API_URL + 'employer/register', data);
+  }
+
+  public login(data: any): Observable<any> {
+    return this.http.post(API_URL + 'login', data);
   }
 
 }

@@ -40,7 +40,7 @@ export class EmployerRegisterComponent implements OnInit {
     this.authService.employerRegister(data).subscribe(res => {
       this.toastr.success('Đăng ký tài khoản thành công. Mời bạn đăng nhập để tiếp tục', 'Đăng ký tài khoản');
       this.router.navigate(['/login']);
-    }, error => {console.log(error)})
+    }, error => {})
   }
 
   getAllCity() {
