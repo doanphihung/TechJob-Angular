@@ -34,18 +34,22 @@
           <!-- login main form -->
           <div class="col-md-6 col-sm-12 col-12 login-main-right">
 
-            <form class="login-form">
+            <form class="login-form" *ngIf="formLogin" [formGroup]="formLogin" (ngSubmit)="submit()">
               <div class="login-main-header">
                 <h3>Đăng Nhập</h3>
               </div>
+                <div class="div lg-lable">
+                  <div class="text-danger mb-2" *ngIf="alert">{{alert}}</div>
+                </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="text" class="input form-control-lgin" placeholder="Email">
+                  <input type="text" class="input form-control-lgin" placeholder="Email" formControlName="email">
                 </div>
               </div>
               <div class="input-div pass">
                 <div class="div lg-lable">
-                  <input type="password" class="input form-control-lgin" placeholder="Password">
+                  <input type="password" class="input form-control-lgin" placeholder="Password"
+                         formControlName="password">
                 </div>
               </div>
               <div class="form-group d-block frm-text">
