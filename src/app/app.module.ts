@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
@@ -19,13 +19,13 @@ import {ToastrModule} from "ngx-toastr";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      preventDuplicates: false,
-      maxOpened: 3,
-      autoDismiss: true,
-      positionClass: 'toast-top-right'
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
     }),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

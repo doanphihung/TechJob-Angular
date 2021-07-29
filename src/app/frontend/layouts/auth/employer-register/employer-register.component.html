@@ -10,7 +10,6 @@
               <img src="./assets/img/techjobs_bgw.png" alt="TechJobs">
             </a>
           </h3>
-          <span class="login-breadcrumb"><em>/</em> Register as Employer</span>
         </div>
         <div class="login-right">
           <a routerLink="" class="btn btn-return">Return Home</a>
@@ -46,21 +45,21 @@
                   <input type="text" class="input form-control-lgin" placeholder="Tên công ty*"
                          formControlName="name">
                 </div>
-                <small></small>
+                <small class="validate" *ngIf="name&&name.invalid">{{getErrorMessageName()}}</small>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
                   <input type="text" class="input form-control-lgin" placeholder="Địa Chỉ Email*"
                          formControlName="email">
                 </div>
-                <small></small>
+                <small class="validate" *ngIf="email&&email.invalid">{{getErrorMessageEmail()}}</small>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
                   <input type="password" class="input form-control-lgin" placeholder="Mật khẩu*"
                          formControlName="password">
                 </div>
-                <small></small>
+                <small class="validate" *ngIf="password&&password.invalid">{{getErrorMessagePassword()}}</small>
               </div>
 
               <div class="input-div one">

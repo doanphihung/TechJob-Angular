@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {City} from "../../../../share/models/city";
 import {Router} from "@angular/router";
 import {CityService} from "../../../../share/services/city.service";
+import {AuthService} from "../../../../share/services/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-employer-register',
@@ -13,9 +15,12 @@ export class EmployerRegisterComponent implements OnInit {
 
   formRegister!: FormGroup
   cities: City[] = [];
+
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private cityService: CityService) {
+              private cityService: CityService,
+              private authService: AuthService,
+              private toastr: ToastrService ) {
   }
 
   ngOnInit(): void {
@@ -30,22 +35,49 @@ export class EmployerRegisterComponent implements OnInit {
     this.getAllCity();
   }
 
-
-  public submit() {
-    console.log(this.formRegister.value);
+  submit() {
+    let data = this.formRegister.value;
+    this.authService.employerRegister(data).subscribe(res => {
+      this.toastr.success('Đăng ký tài khoản thành công. Mời bạn đăng nhập để tiếp tục', 'Đăng ký tài khoản');
+      this.router.navigate(['/login']);
+    }, error => {console.log(error)})
   }
 
-  public getAllCity() {
+  getAllCity() {
     this.cityService.getAll().subscribe((res) => {
       this.cities = res;
-    }, (error) => {console.log(error)},);
+    }, (error) => {
+      console.log(error)
+    },);
   }
 
   get name() {
     return this.formRegister?.get('name')
   }
+  getErrorMessageName() {
+      return 'Tên công ty là bắt buộc!';
+  }
+
   get email() {
-    return this.formRegister?.get('email')
+    return this.formRegister?.get('email');
+  }
+
+  getErrorMessageEmail() {
+    if (this.email?.hasError('required')) {
+      return 'Trường email không được để trống!';
+    }
+    return this.email?.hasError('email') ? 'Email không hợp lệ!' : '';
+  }
+  get password() {
+    return this.formRegister?.get('password');
+  }
+  getErrorMessagePassword() {
+    if (this.password?.hasError('required')) {
+      return 'Mật khẩu bắt buộc!';
+    } else if (this.password?.hasError('minlength')) {
+      return 'Mật khẩu phải từ 6 ký tự!'
+    }
+    return this.password?.hasError('maxlength') ? 'Mật phẩu không được quá 32 ký tụ!' : '';
   }
 
 }
