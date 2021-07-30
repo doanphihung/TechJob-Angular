@@ -40,7 +40,7 @@ export class EmployerRegisterComponent implements OnInit {
     this.authService.employerRegister(data).subscribe(res => {
       this.toastr.success('Đăng ký tài khoản thành công. Mời bạn đăng nhập để tiếp tục', 'Đăng ký tài khoản');
       this.router.navigate(['/login']);
-    }, error => {console.log(error)})
+    }, error => {})
   }
 
   getAllCity() {
@@ -75,7 +75,7 @@ export class EmployerRegisterComponent implements OnInit {
     if (this.password?.hasError('required')) {
       return 'Mật khẩu bắt buộc!';
     } else if (this.password?.hasError('minlength')) {
-      return 'Mật khẩu phải từ 6 ký tự!'
+      return 'Mật khẩu phải từ 8 ký tự!'
     }
     return this.password?.hasError('maxlength') ? 'Mật phẩu không được quá 32 ký tụ!' : '';
   }
