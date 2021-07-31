@@ -1,0 +1,135 @@
+<div class="clearfix"></div>
+<!-- published recuitment -->
+<div class="container-fluid published-recuitment-wrapper">
+  <div class="container published-recuitment-content">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-12 recuitment-inner">
+
+        <div class="accordion" id="accordionExample">
+          <!--          Thông tin công ty-->
+          <div class="card recuitment-card">
+            <div class="card-header recuitment-card-header" id="heading4">
+              <h2 class="mb-0">
+                <a class="btn btn-link btn-block text-left collapsed recuitment-header" type="button"
+                   data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                  Chỉnh sửa thông tin công ty
+                  <span id="clickc1_advance4" class="clicksd">
+                      <i class="fa fa fa-angle-up"></i>
+                    </span>
+                </a>
+              </h2>
+            </div>
+            <form action="" *ngIf="formEditEmployer" [formGroup]="formEditEmployer" (ngSubmit)="submitEditEmployer()">
+              <div id="collapse4" class="collapse show" aria-labelledby="heading4" data-parent="#collapse4">
+                <div class="card-body recuitment-body">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Tên công ty<span style="color: red"
+                                                                                             class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" placeholder="Tên công ty" formControlName="name"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Địa chỉ<span style="color: red"
+                                                                                         class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" placeholder="Nhập địa chỉ" formControlName="address"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Điện thoại<span style="color: red"
+                                                                                            class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" placeholder="Nhập số điện thoại"
+                             formControlName="phone"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Tỉnh/ Thành phô<span style="color: red"
+                                                                                                 class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <select type="text" class="form-control" id="jobProvince2" formControlName="city_id">
+                        <option value="">Thành phố</option>
+                        <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Quy mô nhân sự<span style="color: red"
+                                                                                                class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="number" class="form-control" placeholder="Số nhân sự" formControlName="employees"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Thông tin về công ty<span style="color: red"
+                                                                                                      class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <textarea type="text" class="form-control" placeholder="Thông tin về công ty" rows="5"
+                                formControlName="description"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Logo</label>
+                    <div class="col-sm-9 ">
+                      <div id="drop-area">
+                        <input type="file" id="fileElem" name="avatar" onchange="loadImg()"
+                               (change)="uploadImage($event)">
+                        <label style="cursor: pointer;" for="fileElem">Tải ảnh lên hoặc kéo thả vào đây</label>
+                        <progress id="progress-bar" max=100 value=0 class="d-none"></progress>
+                        <div id="gallery"><img src="" alt="" id="avatar-employer"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Facebook</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" placeholder="Website" formControlName="facebook"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Link map</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" placeholder="Link map" formControlName="map_link"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label"></label>
+                    <div class="col-sm-9">
+                      <button [disabled]="formEditEmployer.invalid" type="submit" class="btn-submit-recuitment" name="">
+                        <i class="fa fa-floppy-o pr-2"></i>Lưu
+                        Tin
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--          End thông tin cty-->
+        </div>
+      </div>
+      <!-- Side bar: Thông tin công ty -->
+      <div class="col-md-4 col-sm-12 col-12">
+        <div class="recuiter-info">
+          <div class="recuiter-info-avt">
+            <img src="http://localhost:8000/storage/company/{{employer.user.image}}">
+          </div>
+          <div class="clearfix list-rec">
+            <h4>{{employer.user.name}}</h4>
+            <ul>
+              <li><i class="fa fa-map-marker ja-icn"></i>{{employer.address}}</li>
+              <li><i class="fa fa-bar-chart ja-icn"></i>Quy mô nhân viên: {{employer.employees}}</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <!--      End side bar-->
+    </div>
+  </div>
+</div>
+
+<!-- (end) published recuitment -->
+
+<div class="clearfix"></div>

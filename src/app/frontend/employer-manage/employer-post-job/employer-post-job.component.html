@@ -1,0 +1,165 @@
+<div class="clearfix"></div>
+<!-- published recuitment -->
+<div class="container-fluid published-recuitment-wrapper">
+  <div class="container published-recuitment-content">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-12 recuitment-inner">
+
+        <div class="accordion" id="accordionExample">
+
+          <!--          Đăng tin tuyển dụng-->
+          <div class="card recuitment-card">
+            <div class="card-header recuitment-card-header" id="headingOne">
+              <h2 class="mb-0">
+                <a class="btn btn-link btn-block text-left recuitment-header" type="button" data-toggle="collapse"
+                   data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Đăng tin tuyển dụng
+                  <span id="clickc1_advance2" class="clicksd">
+                      <i class="fa fa fa-angle-up"></i>
+                    </span>
+                </a>
+              </h2>
+            </div>
+            <form action="" *ngIf="formAddPost" [formGroup]="formAddPost" (ngSubmit)="submitPost()">
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body recuitment-body">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Tiêu đề<span style="color: red"
+                                                                                         class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" placeholder="Nhập tiêu đề" formControlName="title">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Ngôn ngữ<span style="color: red"
+                                                                                          class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" placeholder="Ngôn ngữ" formControlName="language">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Chuyên ngành <span style="color: red"
+                                                                                               class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <select type="text" class="form-control" id="jobType" formControlName="category_id">
+                        <option selected value="">Chọn chuyên ngành</option>
+                        <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Vị trí<span style="color: red"
+                                                                                        class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" placeholder="Vị trí" formControlName="position">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Mô tả công việc<span style="color: red"
+                                                                                                 class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <textarea type="text" class="form-control" placeholder="Nhập mô tả công việc" rows="5" formControlName="description"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Yêu cầu kinh nghiệm<span style="color: red"
+                                                                                                     class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <select type="text" class="form-control" id="jobExperience" formControlName="experience">
+                        <option selected="selected" value="">Chọn kinh nghiệm</option>
+                        <option value="Dưới 1 năm kinh nghiệm">Dưới 1 năm kinh nghiệm</option>
+                        <option value="Từ 1 năm kinh nghiệm">Từ 1 năm kinh nghiệm</option>
+                        <option value="Từ 2 năm kinh nghiệm">Từ 2 năm kinh nghiệm</option>
+                        <option value="Từ 3 năm kinh nghiệm">Từ 3 năm kinh nghiệm</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Mức lương <span style="color: red"
+                                                                                            class="pl-2">*</span></label>
+                    <div class="col-sm-3">
+                      <input type="number" class="form-control" placeholder="Từ" formControlName="from_salary">
+                    </div>
+                    <div class="col-sm-3 text-left">
+                      <input type="number" class="form-control" placeholder="Đến" formControlName="to_salary">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Up to<span class="pl-2"
+                                                                                       style="color: red">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="number" class="form-control" placeholder="Up to" formControlName="upto">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Hình thức làm việc<span style="color: red"
+                                                                                                    class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <select type="text" class="form-control" formControlName="type_of_job">
+                        <option selected value="">Chọn hình thức</option>
+                        <option value="Full time">Full time</option>
+                        <option value="Part time">Part time</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Nơi làm việc <span style="color: red"
+                                                                                               class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <select type="text" class="form-control" id="jobProvince" formControlName="city_id">
+                        <option selected="selected" value="">Nơi làm việc</option>
+                        <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label">Hạn nộp hồ sơ<span style="color: red"
+                                                                                               class="pl-2">*</span></label>
+                    <div class="col-sm-9">
+                      <input type="date" class="form-control" formControlName="expire">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label text-right label"></label>
+                    <div class="col-sm-9">
+                      <button type="submit" class="btn-submit-recuitment"><i class="fa fa-floppy-o pr-2"></i>Lưu
+                        Tin
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--          End đăng tin tuyển dụng-->
+
+
+        </div>
+      </div>
+      <!-- Side bar: Thông tin công ty -->
+      <div class="col-md-4 col-sm-12 col-12">
+        <div class="recuiter-info">
+          <div class="recuiter-info-avt">
+            <img src="http://localhost:8000/storage/company/{{employer.user.image}}">
+          </div>
+          <div class="clearfix list-rec">
+            <h4>{{employer.user.name}}</h4>
+            <ul>
+              <li><i class="fa fa-map-marker ja-icn"></i>{{employer.address}}</li>
+              <li><i class="fa fa-bar-chart ja-icn"></i>Quy mô nhân viên: {{employer.employees}}</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <!--      End side bar-->
+    </div>
+  </div>
+</div>
+
+<!-- (end) published recuitment -->
+
+<div class="clearfix"></div>

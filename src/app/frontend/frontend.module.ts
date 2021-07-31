@@ -17,6 +17,10 @@ import { PreRegisterComponent } from './employer-pre-register/pre-register/pre-r
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './layouts/main/main.component';
 import {MatButtonModule} from "@angular/material/button";
+import { EmployerDetailsComponent } from './employer-manage/employer-details/employer-details.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { EmployerPostJobComponent } from './employer-manage/employer-post-job/employer-post-job.component';
+import { EmployerEditProfileComponent } from './employer-manage/employer-edit-profile/employer-edit-profile.component';
 
 
 @NgModule({
@@ -32,14 +36,18 @@ import {MatButtonModule} from "@angular/material/button";
     EmployerRegisterComponent,
     PreRegisterComponent,
     NavbarComponent,
-    MainComponent
+    MainComponent,
+    EmployerDetailsComponent,
+    EmployerPostJobComponent,
+    EmployerEditProfileComponent
   ],
   imports: [
     CommonModule,
     FrontendRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule
   ]
 })
 export class FrontendModule { }

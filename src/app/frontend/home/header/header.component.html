@@ -48,21 +48,21 @@
         </ul>
         <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav" *ngIf="user_role == 2">
           <li class="nav-item">
-            <img src="https://media.congluan.vn/files/content/2021/05/28/fernando-torres-1449066.jpg" alt=""
+            <img src="http://localhost:8000/storage/company/{{currentUser.user.image}}" alt=""
                  style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
-              {{userData.user_name}}
+              {{currentUser.user.name}}
             </a>
             <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Trang cá nhân</a>
+              <a class="dropdown-item"  routerLink="dashboard/employer/{{currentUser.user.id}}/details">Trang cá nhân</a>
               <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
             </div>
           </li>
           <li>
-            <a class="nav-link btn-employers" routerLink="" tabindex="-1" aria-disabled="true">Đăng
+            <a class="nav-link btn-employers" routerLink="/dashboard/employer/{{currentUser.user.id}}/post" tabindex="-1" aria-disabled="true">Đăng
               tin tuyển dụng</a>
           </li>
         </ul>
