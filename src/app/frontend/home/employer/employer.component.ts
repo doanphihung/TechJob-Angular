@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {EmployerService} from "../../../share/services/employer.service";
 
 @Component({
   selector: 'app-employer',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployerComponent implements OnInit {
 
-  constructor() { }
+  employers: any;
+
+  constructor(private employerService: EmployerService) {
+  }
 
   ngOnInit(): void {
+    this.getAllCompany();
+  }
+
+  getAllCompany() {
+    this.employerService.getAllEmployer().subscribe((res) => {
+      this.employers = res;
+    });
   }
 
 }

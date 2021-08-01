@@ -6,46 +6,61 @@
       <div class="col-md-8 col-sm-12 col-12">
         <div class="job-board-wrap">
           <h2 class="widget-title">
-            <span>Tuyển gấp</span>
+            <span>Tin tuyển dụng mới nhất</span>
           </h2>
 
           <div class="job-group">
-            <div class="job pagi">
+            <div class="job pagi" *ngFor="let job of jobs, index as i">
               <div class="job-content">
                 <div class="job-logo">
                   <a href="#">
-                    <img src="./assets/img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                    <img src="http://localhost:8000/storage/company/{{job.company.image}}" class="job-logo-ima"
+                         alt="job-logo">
                   </a>
                 </div>
 
                 <div class="job-desc">
                   <div class="job-title">
-                    <a href="#">[HCM] 02 Solution Architects–Up to $2000</a>
+                    <a style="color: #4141af">[{{job.city.name}}] {{job.title}} – Up
+                      to {{job.upto | currency: 'VND'}}</a>
                   </div>
                   <div class="job-company">
-                    <a href="#">Fpt Software</a> | <a href="#" class="job-address"><i class="fa fa-map-marker" aria-hidden="true"></i>
-                    Đà Nẵng</a>
+                    <a>{{job.category.name}}</a> | <a class="job-address"><i class="fa fa-map-marker"
+                                                                             aria-hidden="true"></i> {{job.city.name}}
+                  </a>
                   </div>
-
                   <div class="job-inf">
                     <div class="job-main-skill">
-                      <i class="fa fa-code" aria-hidden="true"></i>  <a href="#"> Java</a>
+                      <i class="fa fa-code" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
                     </div>
-                    <div class="job-salary">
-                      <i class="fa fa-money" aria-hidden="true"></i>
-                      <span class="salary-min">15<em class="salary-unit">triệu</em></span>
-                      <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
+                    <div class="job-salary" *ngIf="user_role == 1" style="color: orange">
+                      <span class="salary-min">{{job.from_salary | currency: 'VND'}}</span>
+                      <span class="salary-max">{{job.to_salary | currency: 'VND'}}</span>
+                    </div>
+                    <div class="job-salary" *ngIf="user_role == 3">
+                      <a routerLink="/login" style="color: orange"><i class="fa fa-money" aria-hidden="true"></i> Đăng
+                        nhập để xem mức lương <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="job-deadline" style="color: #4141af">
+                      <span><i class="fa fa-clock-o"
+                               aria-hidden="true"></i>  Hạn nộp: <strong>{{job.expire | date}}</strong></span>
                     </div>
                     <div class="job-deadline">
-                      <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/12/2019</strong></span>
                     </div>
                   </div>
+                  <div>
+                    <a style="color: #288728; font-size: small" class="job-address" *ngIf="job.status == 1"><i
+                      class="fa fa-check-circle" aria-hidden="true"></i> {{job.created_at | date}}</a>
+                    <a style="color: darkred; font-size: small" class="job-address" *ngIf="job.status == 0"><i
+                      class="fa fa-ban" aria-hidden="true"></i> Unactive</a>
+                  </div>
                 </div>
-                <div class="wrap-btn-appl">
+                <div class="wrap-btn-appl" *ngIf="user_role == 1 || user_role == 3">
                   <a href="#" class="btn btn-appl">Apply Now</a>
                 </div>
               </div>
             </div>
+
             <div class="readmorestyle-wrap">
               <a href="#" class="readallstyle reads1">Xem tất cả</a>
             </div>
@@ -59,42 +74,19 @@
       <div class="col-md-4 col-sm-12 col-12 clear-left">
         <div class="job-sidebar">
           <h2 class="widget-title">
-            <span>Ngành Nghề</span>
+            <span>Chuyên ngành</span>
           </h2>
           <div class="catelog-list">
             <ul>
-              <li>
+              <li *ngFor="let category of categories ">
                 <a href="#">
                 <span class="cate-img">
-                  <em>Lập trình viên</em>
+                  <em>{{category.name}}</em>
                 </span>
-                  <span class="cate-count">(1100)</span>
+                  <span class="cate-count">({{category.jobs.length}})</span>
                 </a>
               </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>Nhân viên kiểm thử</em>
-                </span>
-                  <span class="cate-count">(230)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>Kỹ sư cầu nối</em>
-                </span>
-                  <span class="cate-count">(110)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>Designer</em>
-                </span>
-                  <span class="cate-count">(2300)</span>
-                </a>
-              </li>
+
             </ul>
           </div>
         </div>

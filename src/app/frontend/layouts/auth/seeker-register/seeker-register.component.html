@@ -10,10 +10,10 @@
               <img src="./assets/img/techjobs_bgw.png" alt="TechJobs">
             </a>
           </h3>
-          <span class="login-breadcrumb"><em>/</em> Register</span>
+          <span class="login-breadcrumb"><em>/</em>Người tìm việc</span>
         </div>
         <div class="login-right">
-          <a href="#" class="btn btn-return">Return Home</a>
+          <a href="#" class="btn btn-return">Trang chủ</a>
         </div>
       </div>
     </div>
@@ -34,35 +34,35 @@
           <!-- login main form -->
           <div class="col-md-6 col-sm-12 col-12 login-main-right">
 
-            <form class="login-form reg-form">
+            <form class="login-form reg-form" *ngIf="formSeekerRegister" [formGroup]="formSeekerRegister" (ngSubmit)="submitSeekerRegister()">
               <div class="login-main-header">
                 <h3>Đăng Ký</h3>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="text" class="input form-control-lgin" placeholder="Họ và tên*">
+                  <input type="text" class="input form-control-lgin" placeholder="Họ và tên*" formControlName="name">
                 </div>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="text" class="input form-control-lgin" placeholder="Địa chỉ Email*">
+                  <input type="text" class="input form-control-lgin" placeholder="Địa chỉ Email*" formControlName="email">
                 </div>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="text" class="input form-control-lgin" placeholder="Số điện thoại*">
+                  <input type="text" class="input form-control-lgin" placeholder="Số điện thoại*" formControlName="phone">
                 </div>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="password" class="input form-control-lgin" placeholder="Password*">
+                  <input type="password" class="input form-control-lgin" placeholder="Password*" formControlName="password">
                 </div>
               </div>
               <div class="form-group d-block frm-text">
                 <a href="#" class="fg-login d-inline-block"></a>
-                <a href="#" class="fg-login float-right d-inline-block">Bạn đã có tài khoản? Đăng Nhập</a>
+                <a routerLink="/login" class="fg-login float-right d-inline-block">Bạn đã có tài khoản? Đăng Nhập</a>
               </div>
-              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100">Đăng Ký</button>
+              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100" [disabled]="formSeekerRegister.invalid">Đăng Ký</button>
               <div class="form-group d-block w-100 mt-5">
                 <div class="text-or text-center">
                   <span>Hoặc</span>
