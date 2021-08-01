@@ -15,5 +15,7 @@ export class CurrentUserService {
   getCompanyCurrent(user_id: any): Observable<any> {
     return this.http.get(API_URL + `company/${user_id}/details`);
   }
-
+  getCurrentUser(user_id: any): Observable<any> {
+    return this.http.get(API_URL + `current-user/${user_id}/details`);
+  }
 }

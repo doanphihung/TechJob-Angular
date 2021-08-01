@@ -43,16 +43,16 @@
         </ul>
         <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav" *ngIf="user_role == 2">
           <li class="nav-item">
-            <img src="http://localhost:8000/storage/company/{{currentUser.user.image}}" alt=""
+            <img src="http://localhost:8000/storage/company/{{currentUser.image}}" alt=""
                  style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
-              {{currentUser.user.name}}
+              {{currentUser.name}}
             </a>
             <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" routerLink="/dashboard/employer/{{currentUser.user.id}}/details">Trang cá nhân</a>
+              <a class="dropdown-item" routerLink="/dashboard/employer/{{currentUser.id}}/details">Trang cá nhân</a>
               <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
             </div>
           </li>
@@ -73,19 +73,19 @@
   <div class="collapse navbar-collapse container" id="navbarNava">
     <ul class="navbar-nav nav-recuitment-li">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/dashboard/employer/{{currentUser.user.id}}/details">Thông tin công ty</a>
+        <a class="nav-link" routerLink="/dashboard/employer/{{currentUser.id}}/details">Thông tin công ty</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Quản lý tin tuyển dụng</a>
+        <a class="nav-link" routerLink="/dashboard/employer/{{currentUser.id}}/list-job" >Quản lý tin tuyển dụng</a>
       </li>
     </ul>
     <ul class="rec-nav-right">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard/employer/{{currentUser.user.id}}/post">Đăng tin tuyển dụng</a>
+        <a class="nav-link" routerLink="/dashboard/employer/{{currentUser.id}}/post">Đăng tin tuyển dụng</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard/employer/{{currentUser.user.id}}/edit">Chỉnh sửa thông tin</a>
+        <a class="nav-link" routerLink="/dashboard/employer/{{currentUser.id}}/edit">Chỉnh sửa thông tin</a>
       </li>
     </ul>
   </div>

@@ -22,11 +22,9 @@ export class HeaderComponent implements OnInit {
     this.token = localStorage.getItem('token');
     if (this.token) {
       this.tokenDecode = jwtDecode(this.token);
-      this.currentUserService.getCompanyCurrent(this.tokenDecode.user_id).subscribe(res => {
+      this.user_role = this.tokenDecode.user_role;
+      this.currentUserService.getCurrentUser(this.tokenDecode.user_id).subscribe(res => {
         this.currentUser = res;
-        if (this.currentUser) {
-          this.user_role = this.currentUser.user.role;
-        }
       });
     }
   }

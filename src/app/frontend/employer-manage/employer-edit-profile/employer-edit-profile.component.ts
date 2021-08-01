@@ -5,7 +5,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EmployerService} from "../../../share/services/employer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CityService} from "../../../share/services/city.service";
-import {LanguagesService} from "../../../share/services/languages.service";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
@@ -26,7 +25,6 @@ export class EmployerEditProfileComponent implements OnInit {
               private formBuilder: FormBuilder,
               private activeRoute: ActivatedRoute,
               private cityService: CityService,
-              private languageService: LanguagesService,
               private toastr: ToastrService) {
   }
 
@@ -49,9 +47,9 @@ export class EmployerEditProfileComponent implements OnInit {
   findById() {
     let id = this.activeRoute.snapshot.paramMap.get('id');
     this.employerService.findById(id).subscribe((res) => {
-      this.employer = res;
-      this.formEditEmployer.patchValue(res);
-      this.formEditEmployer.patchValue({name: res.user.name});
+      this.employer = res.company;
+      this.formEditEmployer.patchValue(res.company);
+      this.formEditEmployer.patchValue({name: res.company.user.name});
     });
   }
 

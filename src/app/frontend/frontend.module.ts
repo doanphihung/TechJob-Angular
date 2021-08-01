@@ -21,6 +21,12 @@ import { EmployerDetailsComponent } from './employer-manage/employer-details/emp
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EmployerPostJobComponent } from './employer-manage/employer-post-job/employer-post-job.component';
 import { EmployerEditProfileComponent } from './employer-manage/employer-edit-profile/employer-edit-profile.component';
+import { EmployerEditJobComponent } from './employer-manage/employer-edit-job/employer-edit-job.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import { EmployerListJobComponent } from './employer-manage/employer-list-job/employer-list-job.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -39,7 +45,9 @@ import { EmployerEditProfileComponent } from './employer-manage/employer-edit-pr
     MainComponent,
     EmployerDetailsComponent,
     EmployerPostJobComponent,
-    EmployerEditProfileComponent
+    EmployerEditProfileComponent,
+    EmployerEditJobComponent,
+    EmployerListJobComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +55,11 @@ import { EmployerEditProfileComponent } from './employer-manage/employer-edit-pr
     ReactiveFormsModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class FrontendModule { }
