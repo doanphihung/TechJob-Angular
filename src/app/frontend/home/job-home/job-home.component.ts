@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {JobService} from "../../../share/services/job.service";
+import jwtDecode from "jwt-decode";
+import {CategoryService} from "../../../share/services/category.service";
 
 @Component({
   selector: 'app-job-home',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobHomeComponent implements OnInit {
 
-  constructor() { }
+  jobs!: any;
+  categories!: any;
+  user_role: number = 3;
+  token!: any
+  tokenDecode!: any
+
+  constructor(private jobService: JobService,
+              private categoryService: CategoryService) {
+  }
 
   ngOnInit(): void {
+    this.token = localStorage.getItem('token');
+    if (this.token) {
+      this.tokenDecode = jwtDecode(this.token);
+      this.user_role = this.tokenDecode.user_role;
+
+    }
+
+    this.getAllJob();
+    this.getAllCategory();
+  }
+
+  getAllJob() {
+    this.jobService.getAllJob().subscribe((res) => {
+      this.jobs = res;
+    });
+  }
+
+  getAllCategory() {
+    this.categoryService.getAllCategory().subscribe((res) => {
+      this.categories = res;
+    });
   }
 
 }

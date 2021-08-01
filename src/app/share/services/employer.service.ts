@@ -29,4 +29,8 @@ export class EmployerService {
   public getAllJob(id: any): Observable<any> {
     return this.http.get(API_URL + `company/${id}/list-job`);
   }
+
+  public getAllEmployer(): Observable<any> {
+    return this.http.get(API_URL + 'companies');
+  }
 }
