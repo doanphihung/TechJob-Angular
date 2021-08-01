@@ -1,25 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {City} from "../../../share/models/city";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EmployerService} from "../../../share/services/employer.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CityService} from "../../../share/services/city.service";
-import {ToastrService} from "ngx-toastr";
 import {CategoryService} from "../../../share/services/category.service";
+import {ToastrService} from "ngx-toastr";
+import {JobService} from "../../../share/services/job.service";
+import {City} from "../../../share/models/city";
 import {Category} from "../../../share/models/category";
 
 @Component({
-  selector: 'app-employer-post-job',
-  templateUrl: './employer-post-job.component.html',
-  styleUrls: ['./employer-post-job.component.css']
+  selector: 'app-employer-edit-job',
+  templateUrl: './employer-edit-job.component.html',
+  styleUrls: ['./employer-edit-job.component.css']
 })
-export class EmployerPostJobComponent implements OnInit {
+export class EmployerEditJobComponent implements OnInit {
   cities!: City[];
   categories!: Category[];
-  employer: any;
-  formAddPost!: FormGroup
+  formEditJob!: FormGroup;
 
-  constructor(private employerService: EmployerService,
+  constructor(private jobService: JobService,
               private router: Router,
               private formBuilder: FormBuilder,
               private activeRoute: ActivatedRoute,
@@ -29,29 +29,30 @@ export class EmployerPostJobComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formAddPost = this.formBuilder.group({
+    this.formEditJob = this.formBuilder.group({
       title: ['', Validators.required],
       language: ['', Validators.required],
       category_id: ['', Validators.required],
       position: ['', Validators.required],
-      description: [''],
-      experience: [''],
+      description: ['', Validators.required],
+      experience: ['',Validators.required],
       from_salary: ['', Validators.required],
       to_salary: ['', Validators.required],
-      upto: [''],
-      city_id: [''],
-      expire: [''],
-      type_of_job: ['']
+      upto: ['', Validators.required],
+      city_id: ['', Validators.required],
+      expire: ['', Validators.required],
+      type_of_job: ['', Validators.required],
+      status:[''],
     })
-    this.findById();
+    this.findJobById();
     this.getAllCity();
     this.getAllCategory();
   }
 
-  findById() {
+  findJobById() {
     let id = this.activeRoute.snapshot.paramMap.get('id');
-    this.employerService.findById(id).subscribe((res) => {
-      this.employer = res.company;
+    this.jobService.findJobById(id).subscribe((res) => {
+      this.formEditJob.patchValue(res);
     });
   }
 
@@ -67,12 +68,15 @@ export class EmployerPostJobComponent implements OnInit {
     });
   }
 
-  submitPost() {
-    let data = this.formAddPost?.value;
+  submitEditJob() {
+    let data = this.formEditJob?.value;
     let id = this.activeRoute.snapshot.paramMap.get('id');
-    this.employerService.postJob(data, id).subscribe((res) => {
+    this.jobService.updateJob(data, id).subscribe((res) => {
+      console.log(res)
       this.toastr.success(res.message);
-      this.router.navigate(['dashboard/employer/' + id + '/details'])
+    }, (error) => {
+      console.log(error)
+      this.toastr.error(error.error.message);
     });
   }
 

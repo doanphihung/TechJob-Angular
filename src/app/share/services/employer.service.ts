@@ -25,4 +25,8 @@ export class EmployerService {
   public postJob(data:any, id: any): Observable<any> {
     return this.http.post(API_URL + `company/${id}/post`, data);
   }
+
+  public getAllJob(id: any): Observable<any> {
+    return this.http.get(API_URL + `company/${id}/list-job`);
+  }
 }
