@@ -69,7 +69,7 @@
 
         <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav" *ngIf="user_role == 1">
           <li class="nav-item">
-            <img src="http://localhost:8000/storage/company/{{currentUser.image}}" alt=""
+            <img src="http://localhost:8000/storage/seeker/{{currentUser.image}}" alt=""
                  style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
           </li>
           <li class="nav-item dropdown">
@@ -78,8 +78,7 @@
               {{currentUser.name}}
             </a>
             <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
-<!--              <a class="dropdown-item"  routerLink="dashboard/employer/{{currentUser.id}}/details">Trang cá nhân</a>-->
-              <a class="dropdown-item">Trang cá nhân</a>
+              <a class="dropdown-item"  routerLink="dashboard/seeker/{{currentUser.id}}/details">Trang cá nhân</a>
               <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
             </div>
           </li>

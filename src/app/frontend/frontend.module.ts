@@ -27,6 +27,7 @@ import {MatInputModule} from "@angular/material/input";
 import { EmployerListJobComponent } from './employer-manage/employer-list-job/employer-list-job.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { SeekerDetailsComponent } from './seeker-manage/seeker-details/seeker-details.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     EmployerPostJobComponent,
     EmployerEditProfileComponent,
     EmployerEditJobComponent,
-    EmployerListJobComponent
+    EmployerListJobComponent,
+    SeekerDetailsComponent
   ],
     imports: [
         CommonModule,

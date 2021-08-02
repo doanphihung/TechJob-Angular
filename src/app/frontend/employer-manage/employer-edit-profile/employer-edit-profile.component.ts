@@ -15,7 +15,6 @@ import {ToastrService} from "ngx-toastr";
 export class EmployerEditProfileComponent implements OnInit {
 
   cities!: City[];
-  languages!: Language[];
   employer: any;
   formEditEmployer!: FormGroup
   file: any;
@@ -58,11 +57,7 @@ export class EmployerEditProfileComponent implements OnInit {
     const file = (event.target as HTMLInputElement).files[0];
     this.formEditEmployer.patchValue({
       image: file
-
     });
-  }
-  submitPost() {
-
   }
 
   submitEditEmployer() {
