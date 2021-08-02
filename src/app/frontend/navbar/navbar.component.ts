@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import jwtDecode from "jwt-decode";
 import {Router} from "@angular/router";
 import {CurrentUserService} from "../../share/services/current-user.service";
+import {AuthService} from "../../share/services/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +17,9 @@ export class NavbarComponent implements OnInit {
   token: any;
 
   constructor(private router: Router,
-              private currentUserService: CurrentUserService) {
+              private currentUserService: CurrentUserService,
+              private authService: AuthService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -30,6 +34,9 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
+    this.authService.logout().subscribe(res => {
+      this.toastr.success(res.message);
+    });
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
