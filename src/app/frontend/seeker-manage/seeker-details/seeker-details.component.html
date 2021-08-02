@@ -1,0 +1,102 @@
+<div class="container-fluid published-recuitment-wrapper">
+  <div class="container published-recuitment-content">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-12 recuitment-inner">
+        <div class="accordion" id="accordionExample">
+          <div class="card recuitment-card">
+            <div class="card-header recuitment-card-header" id="headingOne">
+              <h2 class="mb-0">
+                <a class="btn btn-link btn-block text-left recuitment-header" type="button" data-toggle="collapse"
+                   data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Thông tin cá nhân
+                  <span id="clickc1_advance2" class="clicksd">
+                      <i class="fa fa fa-angle-up"></i>
+                    </span>
+                </a>
+              </h2>
+            </div>
+            <form class="employee-form" *ngIf="formUpdateSeeker" [formGroup]="formUpdateSeeker" (ngSubmit)="updateSeeker()">
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body recuitment-body row">
+                  <div class="col-md-3">
+                    <div class="avatar-upload">
+                      <div class="avatar-edit">
+                        <input type="file" id="imageUpload" onchange="loadImg()"  (change)= "uploadImage($event)">
+                        <label for="imageUpload"></label>
+                      </div>
+                      <div class="avatar-preview">
+                        <div id="imagePreview" style="background-image: url(https://i.pravatar.cc/500?img=7);">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label text-right label">Họ tên<span style="color: red"
+                                                                                          class="pl-2">*</span></label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Nhập họ và tên" formControlName="name">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label text-right label">Số điện thoại</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" formControlName="phone">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label text-right label">Giới tính<span style="color: red"
+                                                                                             class="pl-2">*</span></label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" formControlName="gender">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label text-right label">Ngày sinh<span style="color: red"
+                                                                                             class="pl-2">*</span></label>
+                      <div class="col-sm-9">
+                        <input type="date" class="form-control" formControlName="birthday">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label text-right label">Address<span style="color: red"
+                                                                                            class="pl-2">*</span></label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" formControlName="address">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label text-right label"></label>
+                      <div class="col-sm-9">
+                        <button type="submit" class="btn-submit-recuitment mb-3 ml-3" name="">
+                          <i class="fa fa-floppy-o pr-2"></i>Lưu Hồ Sơ
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <!-- Side bar -->
+      <div class="col-md-4 col-sm-12 col-12">
+        <div class="recuiter-info">
+          <div class="recuiter-info-avt">
+            <img src="http://localhost:8000/storage/seeker/{{currentSeeker.image}}">
+          </div>
+          <div class="clearfix list-rec">
+            <h4>{{currentSeeker.user.name}}</h4>
+            <ul>
+              <li><a href="#">Việc làm đã nộp <strong>()</strong></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

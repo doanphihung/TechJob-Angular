@@ -11,6 +11,7 @@ import {EmployerPostJobComponent} from "./employer-manage/employer-post-job/empl
 import {EmployerEditProfileComponent} from "./employer-manage/employer-edit-profile/employer-edit-profile.component";
 import {EmployerListJobComponent} from "./employer-manage/employer-list-job/employer-list-job.component";
 import {EmployerEditJobComponent} from "./employer-manage/employer-edit-job/employer-edit-job.component";
+import {SeekerDetailsComponent} from "./seeker-manage/seeker-details/seeker-details.component";
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
       {
         path: 'employer/edit/:id/job',
         component: EmployerEditJobComponent
+      },
+      {
+        path: 'seeker/:id/details',
+        component: SeekerDetailsComponent
       }
     ]
   }
