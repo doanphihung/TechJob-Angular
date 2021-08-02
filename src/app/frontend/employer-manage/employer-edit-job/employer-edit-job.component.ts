@@ -70,6 +70,7 @@ export class EmployerEditJobComponent implements OnInit {
 
   submitEditJob() {
     let data = this.formEditJob?.value;
+    console.log(data)
     let id = this.activeRoute.snapshot.paramMap.get('id');
     this.jobService.updateJob(data, id).subscribe((res) => {
       console.log(res)

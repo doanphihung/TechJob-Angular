@@ -8,7 +8,7 @@ import { FooterComponent } from './home/footer/footer.component';
 import { JobHomeComponent } from './home/job-home/job-home.component';
 import { EmployerComponent } from './home/employer/employer.component';
 import { SearchComponent } from './home/search/search.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { LoginComponent } from './layouts/auth/login/login.component';
 import { SeekerRegisterComponent } from './layouts/auth/seeker-register/seeker-register.component';
@@ -49,17 +49,18 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     EmployerEditJobComponent,
     EmployerListJobComponent
   ],
-  imports: [
-    CommonModule,
-    FrontendRoutingModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule
-  ]
+    imports: [
+        CommonModule,
+        FrontendRoutingModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatInputModule,
+        MatTableModule,
+        MatPaginatorModule,
+        FormsModule
+    ]
 })
 export class FrontendModule { }

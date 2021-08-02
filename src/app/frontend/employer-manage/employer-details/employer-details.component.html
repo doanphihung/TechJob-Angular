@@ -87,7 +87,7 @@
                   <div>
                     <a style="color: #288728; font-size: small" class="job-address" *ngIf="job.status == 1"><i
                       class="fa fa-check-circle" aria-hidden="true"></i> {{job.created_at | date}}</a>
-                    <a style="color: darkred; font-size: small" class="job-address" *ngIf="job.status == 0"><i
+                    <a style="color: darkred; font-size: small" class="job-address" *ngIf="!job.status"><i
                       class="fa fa-ban" aria-hidden="true"></i> Unactive</a>
                   </div>
                 </div>
