@@ -17,6 +17,8 @@ import { PreRegisterComponent } from './employer-pre-register/pre-register/pre-r
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './layouts/main/main.component';
 import {MatButtonModule} from "@angular/material/button";
+import { JobsListComponent } from './main/jobs-list/jobs-list.component';
+import { SearchMainComponent } from './main/search-main/search-main.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import {MatButtonModule} from "@angular/material/button";
     EmployerRegisterComponent,
     PreRegisterComponent,
     NavbarComponent,
-    MainComponent
+    MainComponent,
+    JobsListComponent,
+    SearchMainComponent
   ],
   imports: [
     CommonModule,
