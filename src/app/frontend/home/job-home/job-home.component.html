@@ -21,7 +21,7 @@
 
                 <div class="job-desc">
                   <div class="job-title">
-                    <a style="color: #4141af">[{{job.city.name}}] {{job.title}} – Up
+                    <a [routerLink]="['page/job/'+ job.id + '/details']"  style="color: #4141af">[{{job.city.name}}] {{job.title}} – Up
                       to {{job.upto | currency: 'VND'}}</a>
                   </div>
                   <div class="job-company">
