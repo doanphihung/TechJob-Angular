@@ -6,7 +6,7 @@
         <div class="col-md-2 col-sm-12 col-12">
           <div class="job-detail-header-logo">
             <a>
-              <img src="http://localhost:8000/storage/company/{{currentUser.user.image}}" class="job-logo-ima"
+              <img src="http://localhost:8000/storage/company/{{currentUser?.user.image}}" class="job-logo-ima"
                    alt="job-logo">
             </a>
           </div>
@@ -14,15 +14,15 @@
         <div class="col-md-7 col-sm-12 col-12">
           <div class="job-detail-header-desc">
             <div class="job-detail-header-title">
-              <a>{{currentUser.user.name}}</a>
+              <a>{{currentUser?.user.name}}</a>
             </div>
             <div class="job-detail-header-company">
               <a href="#"></a>
             </div>
             <div class="job-detail-header-de">
               <ul>
-                <li><i class="fa fa-map-marker icn-jd"></i><span>{{currentUser.address}}</span></li>
-                <li><i class="fa fa-user-o icn-jd"></i>Nhân sự: <span>{{currentUser.employees}}+</span></li>
+                <li><i class="fa fa-map-marker icn-jd"></i><span>{{currentUser?.address}}</span></li>
+                <li><i class="fa fa-user-o icn-jd"></i>Nhân sự: <span>{{currentUser?.employees}}+</span></li>
                 <li><i class="fa fa-calendar icn-jd"></i><span>Monday - Friday</span></li>
                 <li><i class="fa fa-archive icn-jd"></i><span>Outsourcing</span></li>
               </ul>
@@ -45,7 +45,7 @@
       <div class="col-md-8 col-sm-12 col-12 clear-left">
         <div class="main-wrapper">
           <h2 class="widget-title">
-            <span>{{currentUser.user.name}} Jobs</span>
+            <span>{{currentUser?.user.name}} Jobs</span>
           </h2>
           <div class="jd-content">
 
@@ -54,7 +54,7 @@
               <div class="job-content">
                 <div class="job-logo">
                   <a href="#">
-                    <img src="http://localhost:8000/storage/company/{{currentUser.user.image}}" class="job-logo-ima"
+                    <img *ngIf="currentUser?.image" src="http://localhost:8000/storage/company/{{currentUser?.user.image}}" class="job-logo-ima"
                          alt="job-logo">
                   </a>
                 </div>
@@ -85,7 +85,7 @@
                     </div>
                   </div>
                   <div>
-                    <a style="color: #288728; font-size: small" class="job-address" *ngIf="job.status == 1"><i
+                    <a style="color: #288728; font-size: small" class="job-address" *ngIf="job.status == '1'"><i
                       class="fa fa-check-circle" aria-hidden="true"></i> {{job.created_at | date}}</a>
                     <a style="color: darkred; font-size: small" class="job-address" *ngIf="!job.status"><i
                       class="fa fa-ban" aria-hidden="true"></i> Unactive</a>
@@ -97,8 +97,6 @@
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
 
@@ -110,7 +108,7 @@
       <div class="col-md-4 col-sm-12 col-12 clear-right">
         <div class="side-bar mb-3">
           <h2 class="widget-title">
-            <span>{{currentUser.user.name}} Info</span>
+            <span>{{currentUser?.user.name}} Info</span>
           </h2>
           <div class="job-info-wrap">
             <div class="job-info-list">
@@ -119,7 +117,7 @@
                   <span class="ji-title">Địa chỉ:</span>
                 </div>
                 <div class="col-sm-8">
-                  <span class="ji-main">{{currentUser.address}}</span>
+                  <span class="ji-main">{{currentUser?.address}}</span>
                 </div>
               </div>
             </div>
@@ -129,7 +127,7 @@
                   <span class="ji-title">Nhân sự:</span>
                 </div>
                 <div class="col-sm-8">
-                  <span class="ji-main">{{currentUser.employees}}+</span>
+                  <span class="ji-main">{{currentUser?.employees}}+</span>
                 </div>
               </div>
             </div>
@@ -139,7 +137,7 @@
                   <span class="ji-title">Facebook:</span>
                 </div>
                 <div class="col-sm-8">
-                  <span class="ji-main">{{currentUser.facebook}}</span>
+                  <span class="ji-main">{{currentUser?.facebook}}</span>
                 </div>
               </div>
             </div>
@@ -149,7 +147,7 @@
                   <span class="ji-title">Map link:</span>
                 </div>
                 <div class="col-sm-8">
-                  <span class="ji-main">{{currentUser.map_link}}</span>
+                  <span class="ji-main">{{currentUser?.map_link}}</span>
                 </div>
               </div>
             </div>
@@ -159,7 +157,7 @@
                   <span class="ji-title">Thông tin về công ty:</span>
                 </div>
                 <div class="col-sm-8">
-                  <span class="ji-main">{{currentUser.description}}</span>
+                  <span class="ji-main">{{currentUser?.description}}</span>
                 </div>
               </div>
             </div>

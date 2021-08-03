@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 import {Router} from "@angular/router";
 import {CurrentUserService} from "../../share/services/current-user.service";
 import {AuthService} from "../../share/services/auth.service";
-import {ToastrService} from "ngx-toastr";
+import {CurrentUser} from "../../share/models/current-user";
 
 @Component({
   selector: 'app-navbar',
@@ -11,18 +11,20 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  currentUser: any;
+  currentUser!: CurrentUser;
   tokenDecode: any;
   user_role: number = 3;
   token: any;
 
   constructor(private router: Router,
               private currentUserService: CurrentUserService,
-              private authService: AuthService,
-              private toastr: ToastrService) {
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
+   this.getCurrentUser();
+  }
+  getCurrentUser() {
     this.token = localStorage.getItem('token');
     if (this.token) {
       this.tokenDecode = jwtDecode(this.token);
@@ -34,11 +36,9 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout().subscribe(res => {
-      this.toastr.success(res.message);
-    });
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    // this.authService.logout().subscribe(res => {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    // });
   }
-
 }

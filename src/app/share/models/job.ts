@@ -16,5 +16,7 @@ export interface Job {
   status?: string,
   company_id?: number,
   city?: any,
-  category?: any
+  category?: any,
+  created_at?: string,
+  update_at?: string
 }
