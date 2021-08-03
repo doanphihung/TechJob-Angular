@@ -8,6 +8,7 @@ import {ToastrService} from "ngx-toastr";
 import {JobService} from "../../../share/services/job.service";
 import {City} from "../../../share/models/city";
 import {Category} from "../../../share/models/category";
+import {Employer} from "../../../share/models/employer";
 
 @Component({
   selector: 'app-employer-edit-job',
@@ -18,6 +19,7 @@ export class EmployerEditJobComponent implements OnInit {
   cities!: City[];
   categories!: Category[];
   formEditJob!: FormGroup;
+  employer!: Employer;
 
   constructor(private jobService: JobService,
               private router: Router,
@@ -52,7 +54,9 @@ export class EmployerEditJobComponent implements OnInit {
   findJobById() {
     let id = this.activeRoute.snapshot.paramMap.get('id');
     this.jobService.findJobById(id).subscribe((res) => {
-      this.formEditJob.patchValue(res);
+      this.formEditJob.patchValue(res.job);
+      this.employer = res.company;
+      console.log(this.employer)
     });
   }
 
@@ -73,10 +77,8 @@ export class EmployerEditJobComponent implements OnInit {
     console.log(data)
     let id = this.activeRoute.snapshot.paramMap.get('id');
     this.jobService.updateJob(data, id).subscribe((res) => {
-      console.log(res)
       this.toastr.success(res.message);
     }, (error) => {
-      console.log(error)
       this.toastr.error(error.error.message);
     });
   }

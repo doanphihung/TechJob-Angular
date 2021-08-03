@@ -7,6 +7,7 @@ import {CityService} from "../../../share/services/city.service";
 import {ToastrService} from "ngx-toastr";
 import {CategoryService} from "../../../share/services/category.service";
 import {Category} from "../../../share/models/category";
+import {Employer} from "../../../share/models/employer";
 
 @Component({
   selector: 'app-employer-post-job',
@@ -16,7 +17,7 @@ import {Category} from "../../../share/models/category";
 export class EmployerPostJobComponent implements OnInit {
   cities!: City[];
   categories!: Category[];
-  employer: any;
+  employer!: Employer;
   formAddPost!: FormGroup
 
   constructor(private employerService: EmployerService,
