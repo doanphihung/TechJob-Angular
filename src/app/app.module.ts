@@ -7,7 +7,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from "ngx-toastr";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +18,7 @@ import {ToastrModule} from "ngx-toastr";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      timeOut: 2000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),

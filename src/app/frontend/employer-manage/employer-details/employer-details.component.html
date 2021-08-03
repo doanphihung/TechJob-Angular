@@ -1,0 +1,173 @@
+<!-- Company detail header -->
+<div class="container-fluid job-detail-wrap">
+  <div class="container job-detail">
+    <div class="job-detail-header">
+      <div class="row">
+        <div class="col-md-2 col-sm-12 col-12">
+          <div class="job-detail-header-logo">
+            <a>
+              <img src="http://localhost:8000/storage/company/{{currentUser.user.image}}" class="job-logo-ima"
+                   alt="job-logo">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-7 col-sm-12 col-12">
+          <div class="job-detail-header-desc">
+            <div class="job-detail-header-title">
+              <a>{{currentUser.user.name}}</a>
+            </div>
+            <div class="job-detail-header-company">
+              <a href="#"></a>
+            </div>
+            <div class="job-detail-header-de">
+              <ul>
+                <li><i class="fa fa-map-marker icn-jd"></i><span>{{currentUser.address}}</span></li>
+                <li><i class="fa fa-user-o icn-jd"></i>Nhân sự: <span>{{currentUser.employees}}+</span></li>
+                <li><i class="fa fa-calendar icn-jd"></i><span>Monday - Friday</span></li>
+                <li><i class="fa fa-archive icn-jd"></i><span>Outsourcing</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- (end) job detail header -->
+
+<div class="clearfix"></div>
+
+<!-- Phần thân -->
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <!-- Main wrapper -->
+      <div class="col-md-8 col-sm-12 col-12 clear-left">
+        <div class="main-wrapper">
+          <h2 class="widget-title">
+            <span>{{currentUser.user.name}} Jobs</span>
+          </h2>
+          <div class="jd-content">
+
+
+            <div class="job pagi" *ngFor="let job of jobs_of_currentUser, index as i">
+              <div class="job-content">
+                <div class="job-logo">
+                  <a href="#">
+                    <img src="http://localhost:8000/storage/company/{{currentUser.user.image}}" class="job-logo-ima"
+                         alt="job-logo">
+                  </a>
+                </div>
+
+                <div class="job-desc">
+                  <div class="job-title">
+                    <a style="color: #4141af">[{{job.city.name}}] {{job.title}} – Up
+                      to {{job.upto | currency: 'VND'}}</a>
+                  </div>
+                  <div class="job-company">
+                    <a>{{job.category.name}}</a> | <a class="job-address"><i class="fa fa-map-marker"
+                                                                             aria-hidden="true"></i> {{job.city.name}}
+                  </a>
+                  </div>
+                  <div class="job-inf">
+                    <div class="job-main-skill">
+                      <i class="fa fa-code" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
+                    </div>
+                    <div class="job-salary">
+                      <span class="salary-min">{{job.from_salary | currency: 'VND'}}</span>
+                      <span class="salary-max">{{job.to_salary | currency: 'VND'}}</span>
+                    </div>
+                    <div class="job-deadline">
+                      <span><i class="fa fa-clock-o"
+                               aria-hidden="true"></i>  Hạn nộp: <strong>{{job.expire | date}}</strong></span>
+                    </div>
+                    <div class="job-deadline">
+                    </div>
+                  </div>
+                  <div>
+                    <a style="color: #288728; font-size: small" class="job-address" *ngIf="job.status == 1"><i
+                      class="fa fa-check-circle" aria-hidden="true"></i> {{job.created_at | date}}</a>
+                    <a style="color: darkred; font-size: small" class="job-address" *ngIf="!job.status"><i
+                      class="fa fa-ban" aria-hidden="true"></i> Unactive</a>
+                  </div>
+                </div>
+                <div class="wrap-btn-appl">
+                  <a class="btn btn-outline-danger" [routerLink]="['/dashboard/employer/edit/' + job.id + '/job']">Chỉnh
+                    sửa</a>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <!-- Sidebar -->
+      <div class="col-md-4 col-sm-12 col-12 clear-right">
+        <div class="side-bar mb-3">
+          <h2 class="widget-title">
+            <span>{{currentUser.user.name}} Info</span>
+          </h2>
+          <div class="job-info-wrap">
+            <div class="job-info-list">
+              <div class="row">
+                <div class="col-sm-4">
+                  <span class="ji-title">Địa chỉ:</span>
+                </div>
+                <div class="col-sm-8">
+                  <span class="ji-main">{{currentUser.address}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-info-list">
+              <div class="row">
+                <div class="col-sm-4">
+                  <span class="ji-title">Nhân sự:</span>
+                </div>
+                <div class="col-sm-8">
+                  <span class="ji-main">{{currentUser.employees}}+</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-info-list">
+              <div class="row">
+                <div class="col-sm-4">
+                  <span class="ji-title">Facebook:</span>
+                </div>
+                <div class="col-sm-8">
+                  <span class="ji-main">{{currentUser.facebook}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-info-list">
+              <div class="row">
+                <div class="col-sm-4">
+                  <span class="ji-title">Map link:</span>
+                </div>
+                <div class="col-sm-8">
+                  <span class="ji-main">{{currentUser.map_link}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="job-info-list">
+              <div class="row">
+                <div class="col-sm-4">
+                  <span class="ji-title">Thông tin về công ty:</span>
+                </div>
+                <div class="col-sm-8">
+                  <span class="ji-main">{{currentUser.description}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- (end) Phần thân-->
+

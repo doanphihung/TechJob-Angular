@@ -20,7 +20,7 @@ export class EmployerRegisterComponent implements OnInit {
               private router: Router,
               private cityService: CityService,
               private authService: AuthService,
-              private toastr: ToastrService ) {
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -38,9 +38,16 @@ export class EmployerRegisterComponent implements OnInit {
   submit() {
     let data = this.formRegister.value;
     this.authService.employerRegister(data).subscribe(res => {
-      this.toastr.success('Đăng ký tài khoản thành công. Mời bạn đăng nhập để tiếp tục', 'Đăng ký tài khoản');
-      this.router.navigate(['/login']);
-    }, error => {})
+      console.log(res);
+      if (res.status == 1) {
+        this.toastr.success(res.message);
+        this.router.navigate(['/login']);
+      } else {
+        this.toastr.error(res.message);
+      }
+    }, (error) => {
+        this.toastr.error(error.error.message);
+    })
   }
 
   getAllCity() {
@@ -54,8 +61,9 @@ export class EmployerRegisterComponent implements OnInit {
   get name() {
     return this.formRegister?.get('name')
   }
+
   getErrorMessageName() {
-      return 'Tên công ty là bắt buộc!';
+    return 'Tên công ty là bắt buộc!';
   }
 
   get email() {
@@ -68,9 +76,11 @@ export class EmployerRegisterComponent implements OnInit {
     }
     return this.email?.hasError('email') ? 'Email không hợp lệ!' : '';
   }
+
   get password() {
     return this.formRegister?.get('password');
   }
+
   getErrorMessagePassword() {
     if (this.password?.hasError('required')) {
       return 'Mật khẩu bắt buộc!';
