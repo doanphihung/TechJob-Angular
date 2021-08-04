@@ -79,7 +79,7 @@
 
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <select formControlName="city_id" id="">
+                  <select formControlName="city_id">
                     <option value="">Thành phố</option>
                     <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
                   </select>
