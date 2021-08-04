@@ -4,6 +4,8 @@ import jwtDecode from "jwt-decode";
 import {CategoryService} from "../../../share/services/category.service";
 import {Job} from "../../../share/models/job";
 import {Category} from "../../../share/models/category";
+import {CategoryDataService} from "../../../share/services/category-data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-job-home',
@@ -13,13 +15,15 @@ import {Category} from "../../../share/models/category";
 export class JobHomeComponent implements OnInit {
 
   jobs: Job[] = [];
-  categories: Category[] = [] ;
+  categories: Category[] = [];
   user_role: number = 3;
   token!: any
   tokenDecode!: any
 
   constructor(private jobService: JobService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private categoryDataService: CategoryDataService,
+              private router:Router) {
   }
 
   ngOnInit(): void {
@@ -44,4 +48,13 @@ export class JobHomeComponent implements OnInit {
       this.categories = res;
     });
   }
+<<<<<<< HEAD
+=======
+
+  categorySearch(id: any) {
+    this.categoryDataService.changeCategoryData(id);
+    this.router.navigate(['/page/list'])
+  }
+
+>>>>>>> 3aa864201fb6a1332a8e38585ffb85b42c4e1a1e
 }
