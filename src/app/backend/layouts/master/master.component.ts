@@ -23,9 +23,17 @@ export class MasterComponent implements OnInit {
     if (this.token) {
       this.tokenDecode = jwtDecode(this.token);
       this.currentUserService.getCurrentUser(this.tokenDecode.user_id).subscribe(res => {
-        this.admin = res;
+        this.admin = res?.currentUser;
+        console.log(this.admin)
       });
     }
+  }
+
+  logout() {
+    // this.authService.logout().subscribe(res => {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+    // });
   }
 
 }

@@ -13,7 +13,6 @@ export class EmployerService {
   constructor(private http: HttpClient) {
   }
 
-
   public findById(id: any): Observable<any> {
     return this.http.get(API_URL + `company/${id}/details`);
   }
@@ -32,5 +31,18 @@ export class EmployerService {
 
   public getAllEmployer(): Observable<any> {
     return this.http.get(API_URL + 'companies');
+  }
+
+
+  //ADMIN
+  public getAllEmployerAdmin(): Observable<any> {
+    return this.http.get(API_URL + 'admin/companies');
+  }
+  public employerActive(id: any): Observable<any> {
+    return this.http.get(API_URL + `admin/companies/${id}/change-active`)
+  }
+
+  public employerUnActive(id: any): Observable<any> {
+    return this.http.get(API_URL + `admin/companies/${id}/change-unActive`)
   }
 }

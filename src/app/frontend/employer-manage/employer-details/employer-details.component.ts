@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EmployerService} from "../../../share/services/employer.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {City} from "../../../share/models/city";
 import {Employer} from "../../../share/models/employer";
 import {Job} from "../../../share/models/job";
@@ -17,18 +17,21 @@ export class EmployerDetailsComponent implements OnInit {
   file: any;
 
   constructor(private employerService: EmployerService,
-              private activeRoute: ActivatedRoute) {}
+              private activeRoute: ActivatedRoute,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getCurrentCompany();
 
   }
+
   getCurrentCompany() {
     let id = this.activeRoute.snapshot.paramMap.get('id');
     this.employerService.findById(id).subscribe((res) => {
       this.currentUser = res.company;
       this.jobs_of_currentUser = res.jobs;
+      console.log(this.jobs_of_currentUser)
     });
   }
-
 }
