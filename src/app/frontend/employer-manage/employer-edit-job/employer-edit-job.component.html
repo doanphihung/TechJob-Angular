@@ -28,6 +28,13 @@
                                                                                          class="pl-2">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" placeholder="Nhập tiêu đề" formControlName="title">
+                      <div *ngIf="f.title.invalid && (f.title.dirty || f.title.touched)">
+                        <div *ngIf="f.title.errors">
+                          <div *ngIf="f.title.errors.required">
+                            <small class="validate">*Tiêu đề không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -35,6 +42,13 @@
                                                                                           class="pl-2">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" placeholder="Ngôn ngữ" formControlName="language">
+                      <div *ngIf="f.language.invalid && (f.language.dirty || f.language.touched)">
+                        <div *ngIf="f.language.errors">
+                          <div *ngIf="f.language.errors.required">
+                            <small class="validate">*Ngôn ngữ không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -45,6 +59,13 @@
                         <option selected value="">Chọn chuyên ngành</option>
                         <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
                       </select>
+                      <div *ngIf="f.category_id.invalid && (f.category_id.dirty || f.category_id.touched)">
+                        <div *ngIf="f.category_id.errors">
+                          <div *ngIf="f.category_id.errors.required">
+                            <small class="validate">*Chuyên ngành không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -54,6 +75,13 @@
                                                                                         class="pl-2">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" placeholder="Vị trí" formControlName="position">
+                      <div *ngIf="f.position.invalid && (f.position.dirty || f.position.touched)">
+                        <div *ngIf="f.position.errors">
+                          <div *ngIf="f.position.errors.required">
+                            <small class="validate">*Trường này là bắt buộc!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -62,6 +90,13 @@
                                                                                                  class="pl-2">*</span></label>
                     <div class="col-sm-9">
                       <textarea type="text" class="form-control" placeholder="Nhập mô tả công việc" rows="5" formControlName="description"></textarea>
+                      <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+                        <div *ngIf="f.description.errors">
+                          <div *ngIf="f.description.errors.required">
+                            <small class="validate">*Mô tả công việc không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -82,9 +117,23 @@
                                                                                             class="pl-2">*</span></label>
                     <div class="col-sm-3">
                       <input type="number" class="form-control" placeholder="Từ" formControlName="from_salary">
+                      <div *ngIf="f.from_salary.invalid && (f.from_salary.dirty || f.from_salary.touched)">
+                        <div *ngIf="f.from_salary.errors">
+                          <div *ngIf="f.from_salary.errors.required">
+                            <small class="validate">*Trường này là bắt buộc!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-sm-3 text-left">
                       <input type="number" class="form-control" placeholder="Đến" formControlName="to_salary">
+                      <div *ngIf="f.to_salary.invalid && (f.to_salary.dirty || f.to_salary.touched)">
+                        <div *ngIf="f.to_salary.errors">
+                          <div *ngIf="f.to_salary.errors.required">
+                            <small class="validate">*Trường này là bắt buộc!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -103,6 +152,13 @@
                         <option value="Full time">Full time</option>
                         <option value="Part time">Part time</option>
                       </select>
+                      <div *ngIf="f.type_of_job.invalid && (f.type_of_job.dirty || f.type_of_job.touched)">
+                        <div *ngIf="f.type_of_job.errors">
+                          <div *ngIf="f.type_of_job.errors.required">
+                            <small class="validate">*Trường này là bắt buộc!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -113,6 +169,13 @@
                         <option selected="selected" value="">Nơi làm việc</option>
                         <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
                       </select>
+                      <div *ngIf="f.city_id.invalid && (f.city_id.dirty || f.city_id.touched)">
+                        <div *ngIf="f.city_id.errors">
+                          <div *ngIf="f.city_id.errors.required">
+                            <small class="validate">*Trường này là bắt buộc!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
