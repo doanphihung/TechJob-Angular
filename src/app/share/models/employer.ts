@@ -17,4 +17,5 @@ export interface Employer {
   city?: any,
   jobs?: any,
   user?: any
+  status?: string
 }

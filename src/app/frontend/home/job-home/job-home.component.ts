@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {JobService} from "../../../share/services/job.service";
 import jwtDecode from "jwt-decode";
 import {CategoryService} from "../../../share/services/category.service";
+import {Job} from "../../../share/models/job";
+import {Category} from "../../../share/models/category";
 
 @Component({
   selector: 'app-job-home',
@@ -10,8 +12,8 @@ import {CategoryService} from "../../../share/services/category.service";
 })
 export class JobHomeComponent implements OnInit {
 
-  jobs!: any;
-  categories!: any;
+  jobs: Job[] = [];
+  categories: Category[] = [] ;
   user_role: number = 3;
   token!: any
   tokenDecode!: any
@@ -25,9 +27,7 @@ export class JobHomeComponent implements OnInit {
     if (this.token) {
       this.tokenDecode = jwtDecode(this.token);
       this.user_role = this.tokenDecode.user_role;
-
     }
-
     this.getAllJob();
     this.getAllCategory();
   }

@@ -21,6 +21,7 @@ export class EmployerRegisterComponent implements OnInit {
               private cityService: CityService,
               private authService: AuthService,
               private toastr: ToastrService) {
+
   }
 
   ngOnInit(): void {
@@ -33,6 +34,12 @@ export class EmployerRegisterComponent implements OnInit {
       map_link: [''],
     });
     this.getAllCity();
+
+  }
+
+  // @ts-ignore
+  get f() {
+    return  this.formRegister.controls;
   }
 
   submit() {
@@ -57,37 +64,4 @@ export class EmployerRegisterComponent implements OnInit {
       console.log(error)
     },);
   }
-
-  get name() {
-    return this.formRegister?.get('name')
-  }
-
-  getErrorMessageName() {
-    return 'Tên công ty là bắt buộc!';
-  }
-
-  get email() {
-    return this.formRegister?.get('email');
-  }
-
-  getErrorMessageEmail() {
-    if (this.email?.hasError('required')) {
-      return 'Trường email không được để trống!';
-    }
-    return this.email?.hasError('email') ? 'Email không hợp lệ!' : '';
-  }
-
-  get password() {
-    return this.formRegister?.get('password');
-  }
-
-  getErrorMessagePassword() {
-    if (this.password?.hasError('required')) {
-      return 'Mật khẩu bắt buộc!';
-    } else if (this.password?.hasError('minlength')) {
-      return 'Mật khẩu phải từ 8 ký tự!'
-    }
-    return this.password?.hasError('maxlength') ? 'Mật phẩu không được quá 32 ký tụ!' : '';
-  }
-
 }

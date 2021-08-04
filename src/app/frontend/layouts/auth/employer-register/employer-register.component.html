@@ -42,24 +42,39 @@
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="text" class="input form-control-lgin" placeholder="Tên công ty*"
-                         formControlName="name">
+                  <input type="text" class="input form-control-lgin" placeholder="Tên công ty*" formControlName="name">
                 </div>
-                <small class="validate" *ngIf="name&&name.invalid">{{getErrorMessageName()}}</small>
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                  <div *ngIf="f.name.errors">
+                    <div *ngIf="f.name.errors.required">
+                      <small class="validate">Tên công ty không được để trống!</small>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="text" class="input form-control-lgin" placeholder="Địa Chỉ Email*"
-                         formControlName="email">
+                  <input type="text" class="input form-control-lgin" placeholder="Địa Chỉ Email*" formControlName="email">
                 </div>
-                <small class="validate" *ngIf="email&&email.invalid">{{getErrorMessageEmail()}}</small>
+
+                <div *ngIf="f.email.invalid && f.email.dirty">
+                  <div *ngIf="f.email.errors">
+                    <div *ngIf="f.email.errors.required">
+                      <small class="validate">Email không được để trống!</small>
+                    </div>
+                    <div *ngIf="f.email.errors.email">
+                      <small class="validate">Email không đúng định dạng!</small>
+                    </div>
+                  </div>
+                </div>
+
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
                   <input type="password" class="input form-control-lgin" placeholder="Mật khẩu*"
                          formControlName="password">
                 </div>
-                <small class="validate" *ngIf="password&&password.invalid">{{getErrorMessagePassword()}}</small>
+                <!--                <small class="validate" *ngIf="password&&password.invalid">{{getErrorMessagePassword()}}</small>-->
               </div>
 
               <div class="input-div one">

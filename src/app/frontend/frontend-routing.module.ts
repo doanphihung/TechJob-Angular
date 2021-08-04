@@ -10,7 +10,6 @@ import {JobsListComponent} from "./main/jobs-list/jobs-list.component";
 import {EmployerDetailsComponent} from "./employer-manage/employer-details/employer-details.component";
 import {EmployerPostJobComponent} from "./employer-manage/employer-post-job/employer-post-job.component";
 import {EmployerEditProfileComponent} from "./employer-manage/employer-edit-profile/employer-edit-profile.component";
-import {EmployerListJobComponent} from "./employer-manage/employer-list-job/employer-list-job.component";
 import {EmployerEditJobComponent} from "./employer-manage/employer-edit-job/employer-edit-job.component";
 import {SeekerDetailsComponent} from "./seeker-manage/seeker-details/seeker-details.component";
 import {JobDetailsComponent} from "./job/job-details/job-details.component";
