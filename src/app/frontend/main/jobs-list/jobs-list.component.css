@@ -1,3 +1,7 @@
 li{
   float: left;
 }
+#category:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}

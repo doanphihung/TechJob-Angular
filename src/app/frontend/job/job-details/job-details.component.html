@@ -9,29 +9,31 @@
         <div class="col-md-2 col-sm-12 col-12">
           <div class="job-detail-header-logo">
             <a href="#">
-              <img src="../../../../assets/frontend/img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+              <img src="http://localhost:8000/storage/company/{{job.company.image}}" class="job-logo-ima" alt="job-logo">
             </a>
           </div>
         </div>
         <div class="col-md-7 col-sm-12 col-12">
           <div class="job-detail-header-desc">
             <div class="job-detail-header-title">
-              <a href="#">[HCM] 02 Solution Architects–Up to $2000</a>
+              <a href="#">[{{job.city.name}}] {{job.title}} – Up
+                to {{job.upto | currency: 'VND'}}</a>
             </div>
             <div class="job-detail-header-company">
-              <a href="#">Fpt Software</a>
+              <a href="#">{{job.category.name}}</a>
             </div>
             <div class="job-detail-header-de">
               <ul>
-                <li><i class="fa fa-map-marker icn-jd"></i><span>Đà Nẵng</span></li>
-                <li><i class="fa fa-usd icn-jd"></i><span>15 triệu - 20 triệu</span></li>
-                <li><i class="fa fa-calendar icn-jd"></i><span>15/01/2019</span></li>
+                <li><i class="fa fa-map-marker icn-jd"></i><span>{{job.city.name}}</span></li>
+                <li><i class="fa fa-usd icn-jd"></i><span class="salary-min">{{job.from_salary | currency: 'VND'}}</span>
+                  <span class="salary-max">{{job.to_salary | currency: 'VND'}}</span></li>
+                <li><i class="fa fa-calendar icn-jd"></i><span>{{job.expire}}</span></li>
               </ul>
             </div>
             <div class="job-detail-header-tag">
               <ul>
                 <li>
-                  <a href="#">Java</a>
+                  <a href="#">{{job.language}}</a>
                 </li>
               </ul>
             </div>
@@ -64,14 +66,10 @@
             <span>Mô tả công việc</span>
           </h2>
           <div class="jd-content">
-            (*). Validus Vietnam is looking for a Senior QA Engineer for Web and Mobile applications.<br>
-            As a Senior QA Engineer, you will be working alongside the Vietnam technology and product development teams to create and execute manual and automated tests to ensure product quality. This position works collaboratively with the regional technology team and is based in Ho Chi Minh City, Vietnam.<br>
+            (*). {{company.description}}.<br>
           </div>
-        </div>
+              </div>
       </div>
-
-
-
       <!-- Sidebar -->
       <div class="col-md-4 col-sm-12 col-12 clear-right">
         <div class="side-bar mb-3">
@@ -80,24 +78,20 @@
           </h2>
           <div class="company-intro">
             <a href="#">
-              <img src="../../../../assets/frontend/img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+              <img src="http://localhost:8000/storage/company/{{job.company.image}}" class="job-logo-ima" alt="job-logo">
             </a>
           </div>
-          <h2 class="company-intro-name">Fpt Software</h2>
+          <h2 class="company-intro-name">{{company.name}}</h2>
           <ul class="job-add">
             <li>
               <i class="fa fa-map-marker ja-icn"></i>
-              <span>Trụ sở: 212 Phan Đăng Lưu - Hòa Cường Bắc - Hải Châu - Đà Nẵng </span>
+              <span>{{company.address}}</span>
             </li>
             <li>
-              <i class="fa fa-bar-chart ja-icn"></i>
-              <span>Quy mô công ty: 50-100 người</span>
+              <i class="fa fa-bar-chart ja-icn"></i>Quy mô công ty lên đến :
+              <span>{{company.employees}}</span> người
             </li>
           </ul>
-
-          <div class="wrap-comp-info mb-2">
-            <a href="#" class="btn btn-primary btn-company">Xem thêm</a>
-          </div>
         </div>
 
         <div class="side-bar mb-3">
@@ -107,39 +101,21 @@
 
           <div class="job-tt-contain">
             <div class="job-tt-item">
-
-              <a href="#" class="thumb">
-                <div style="background-image: url(img/alipay-logo.png);"></div>
+<div class="info">
+              <a href="#">
+                <img src="http://localhost:8000/storage/company/{{job.company.image}}" class="job-logo-ima" alt="job-logo">
               </a>
-
+            </div>
               <div class="info">
                 <a href="#" class="jobname">
-                  Fullstack .NET Developer (Angular/React)
+                  [{{job.city.name}}] {{job.title}} – Up
+                  to {{job.upto | currency: 'VND'}}
                 </a>
                 <a href="#" class="company">
-                  Alipay Software
+                  {{job.category.name}}
                 </a>
               </div>
             </div>
-
-            <div class="job-tt-item">
-
-              <a href="#" class="thumb">
-                <div style="background-image: url(img/fpt-logo.png);"></div>
-              </a>
-
-              <div class="info">
-                <a href="#" class="jobname">
-                  [HCM] 02 Solution Architects–Up to $2000
-                </a>
-                <a href="#" class="company">
-                  FPT Software
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="side-bar mb-3">
 
           <div class="container">
