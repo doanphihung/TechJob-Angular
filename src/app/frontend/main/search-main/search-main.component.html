@@ -25,14 +25,14 @@
                   </div>
                   <div class="col-md-4">
                     <select formControlName="language" id="computer-languages" style="text-align: right" class="form-control">
-                      <option value="" selected disabled>Tất cả ngôn ngữ</option>
+                      <option value="" selected>Tất cả ngôn ngữ</option>
                       <option *ngFor="let language of languages;index as i" value="{{language.language}}">{{language.language}}</option>
                     </select>
 <!--                                        <i class="fa fa-code sfa" aria-hidden="true"></i>-->
                   </div>
                   <div class="col-md-3">
                     <select formControlName="city" id="s-provinces" style="text-align: center" class="form-control">
-                      <option value="" selected disabled>Tất cả địa điểm</option>
+                      <option value="" selected>Tất cả địa điểm</option>
                       <option *ngFor="let city of cities;index as i" value="{{i+1}}">{{city.name}}</option>
                     </select>
 <!--                                        <i class="fa fa-map-marker sfa" aria-hidden="true"></i>-->
