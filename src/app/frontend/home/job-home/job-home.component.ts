@@ -48,13 +48,9 @@ export class JobHomeComponent implements OnInit {
       this.categories = res;
     });
   }
-<<<<<<< HEAD
-=======
 
   categorySearch(id: any) {
     this.categoryDataService.changeCategoryData(id);
     this.router.navigate(['/page/list'])
   }
-
->>>>>>> 3aa864201fb6a1332a8e38585ffb85b42c4e1a1e
 }
