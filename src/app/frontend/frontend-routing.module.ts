@@ -6,6 +6,7 @@ import {SeekerRegisterComponent} from "./layouts/auth/seeker-register/seeker-reg
 import {EmployerRegisterComponent} from "./layouts/auth/employer-register/employer-register.component";
 import {MainComponent} from "./layouts/main/main.component";
 import {PreRegisterComponent} from "./employer-pre-register/pre-register/pre-register.component";
+import {JobsListComponent} from "./main/jobs-list/jobs-list.component";
 import {EmployerDetailsComponent} from "./employer-manage/employer-details/employer-details.component";
 import {EmployerPostJobComponent} from "./employer-manage/employer-post-job/employer-post-job.component";
 import {EmployerEditProfileComponent} from "./employer-manage/employer-edit-profile/employer-edit-profile.component";
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'pre-register',
         component: PreRegisterComponent
+      },
+      {
+        path:'list',
+        component:JobsListComponent
       },
       {
         path: 'job/:id/details',
