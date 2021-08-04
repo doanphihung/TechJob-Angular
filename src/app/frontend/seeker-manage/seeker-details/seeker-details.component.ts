@@ -35,6 +35,9 @@ export class SeekerDetailsComponent implements OnInit {
 
     this.getCurrentSeeker()
   }
+  get f() {
+    return  this.formUpdateSeeker.controls;
+  }
 
   getCurrentSeeker() {
     let id = this.activeRoute.snapshot.paramMap.get('id');

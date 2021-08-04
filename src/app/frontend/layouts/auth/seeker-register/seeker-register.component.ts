@@ -24,8 +24,32 @@ export class SeekerRegisterComponent implements OnInit {
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(32)]]
-    })
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmpassword: ['', [Validators.required]]
+    },
+
+    {validators: this.MustMatch('password', 'confirmpassword')
+
+    });
+  }
+
+  // @ts-ignore
+  get f() {
+    return  this.formSeekerRegister.controls;
+  }
+  MustMatch(controlName: string, matchingControlName: string) {
+    return(formGroup: FormGroup) => {
+      const control =  formGroup.controls[controlName];
+      const matchingControl =  formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors.MustMatch) {
+        return
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({MustMatch: true})
+      } else  {
+        matchingControl.setErrors(null);
+      }
+    }
   }
 
   submitSeekerRegister() {

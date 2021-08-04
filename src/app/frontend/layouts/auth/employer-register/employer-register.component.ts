@@ -28,10 +28,13 @@ export class EmployerRegisterComponent implements OnInit {
     this.formRegister = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(32)]],
-      city_id: [''],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmpassword: ['', [Validators.required]],
+      city_id: ['', Validators.required],
       employees: [''],
       map_link: [''],
+    },
+      {validators: this.MustMatch('password', 'confirmpassword')
     });
     this.getAllCity();
 
@@ -41,6 +44,22 @@ export class EmployerRegisterComponent implements OnInit {
   get f() {
     return  this.formRegister.controls;
   }
+
+  MustMatch(controlName: string, matchingControlName: string) {
+      return(formGroup: FormGroup) => {
+        const control =  formGroup.controls[controlName];
+        const matchingControl =  formGroup.controls[matchingControlName];
+        if (matchingControl.errors && !matchingControl.errors.MustMatch) {
+          return
+        }
+        if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({MustMatch: true})
+        } else  {
+          matchingControl.setErrors(null);
+        }
+      }
+  }
+
 
   submit() {
     let data = this.formRegister.value;

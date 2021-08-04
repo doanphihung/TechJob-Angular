@@ -42,27 +42,80 @@
                 <div class="div lg-lable">
                   <input type="text" class="input form-control-lgin" placeholder="Họ và tên*" formControlName="name">
                 </div>
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                  <div *ngIf="f.name.errors">
+                    <div *ngIf="f.name.errors.required">
+                      <small class="validate">*Tên người dùng không được để trống!</small>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
                   <input type="text" class="input form-control-lgin" placeholder="Địa chỉ Email*" formControlName="email">
                 </div>
+                <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                  <div *ngIf="f.email.errors">
+                    <div *ngIf="f.email.errors.required">
+                      <small class="validate">*Địa chỉ email là bắt buộc!</small>
+                    </div>
+                    <div *ngIf="f.email.errors.email">
+                      <small class="validate">*Email không đúng định dạng!</small>
+                    </div>
+                  </div>
+                </div>
+
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
                   <input type="text" class="input form-control-lgin" placeholder="Số điện thoại*" formControlName="phone">
+                </div>
+                <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
+                  <div *ngIf="f.phone.errors">
+                    <div *ngIf="f.phone.errors.pattern">
+                      <small class="validate">*Số điện thoại không hợp lệ!</small>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
                   <input type="password" class="input form-control-lgin" placeholder="Password*" formControlName="password">
                 </div>
+                <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                  <div *ngIf="f.password.errors">
+                    <div *ngIf="f.password.errors.required">
+                      <small class="validate">*Mật khẩu là bắt buộc!</small>
+                    </div>
+                    <div *ngIf="f.password.errors.minlength">
+                      <small class="validate">*Mật khẩu phải từ 8 ký tự!</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="input-div one">
+                <div class="div lg-lable">
+                  <input type="password" class="input form-control-lgin" placeholder="Confirm password*" formControlName="confirmpassword">
+                </div>
+                <div *ngIf="f.confirmpassword.invalid && (f.confirmpassword.dirty || f.confirmpassword.touched)">
+                  <div *ngIf="f.confirmpassword.errors">
+                    <div *ngIf="f.confirmpassword.errors.required">
+                      <small class="validate">*Xác nhận mật khẩu không được để trống!</small>
+                    </div>
+                    <div *ngIf="f.confirmpassword.errors.MustMatch">
+                      <small class="validate">*Mật khẩu không trùng khớp!</small>
+                    </div>
+                  </div>
+                </div>
+
               </div>
               <div class="form-group d-block frm-text">
                 <a href="#" class="fg-login d-inline-block"></a>
                 <a routerLink="/login" class="fg-login float-right d-inline-block">Bạn đã có tài khoản? Đăng Nhập</a>
               </div>
-              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100" [disabled]="formSeekerRegister.invalid">Đăng Ký</button>
+              <div *ngIf="formSeekerRegister.valid">
+              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100">Đăng Ký</button>
+              </div>
               <div class="form-group d-block w-100 mt-5">
                 <div class="text-or text-center">
                   <span>Hoặc</span>

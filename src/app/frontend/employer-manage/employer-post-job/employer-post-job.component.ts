@@ -35,18 +35,22 @@ export class EmployerPostJobComponent implements OnInit {
       language: ['', Validators.required],
       category_id: ['', Validators.required],
       position: ['', Validators.required],
-      description: [''],
-      experience: [''],
+      description: ['', Validators.required],
+      experience: ['', Validators.required],
       from_salary: ['', Validators.required],
       to_salary: ['', Validators.required],
-      upto: [''],
-      city_id: [''],
-      expire: [''],
-      type_of_job: ['']
+      upto: ['', Validators.required],
+      city_id: ['', Validators.required],
+      expire: ['', Validators. required],
+      type_of_job: ['', Validators.required]
     })
     this.findById();
     this.getAllCity();
     this.getAllCategory();
+  }
+
+  get f() {
+    return  this.formAddPost.controls;
   }
 
   findById() {

@@ -37,18 +37,22 @@ export class EmployerEditJobComponent implements OnInit {
       category_id: ['', Validators.required],
       position: ['', Validators.required],
       description: ['', Validators.required],
-      experience: ['',Validators.required],
+      experience: [''],
       from_salary: ['', Validators.required],
       to_salary: ['', Validators.required],
-      upto: ['', Validators.required],
+      upto: [''],
       city_id: ['', Validators.required],
-      expire: ['', Validators.required],
+      expire: [''],
       type_of_job: ['', Validators.required],
       status:[''],
     })
     this.findJobById();
     this.getAllCity();
     this.getAllCategory();
+  }
+
+  get f() {
+    return  this.formEditJob.controls;
   }
 
   findJobById() {

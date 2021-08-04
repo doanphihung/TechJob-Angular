@@ -27,6 +27,13 @@
                                                                                              class="pl-2">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" placeholder="Tên công ty" formControlName="name"/>
+                      <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                        <div *ngIf="f.name.errors">
+                          <div *ngIf="f.name.errors.required">
+                            <small class="validate">*Tên công ty không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -34,6 +41,13 @@
                                                                                          class="pl-2">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" placeholder="Nhập địa chỉ" formControlName="address"/>
+                      <div *ngIf="f.address.invalid && (f.address.dirty || f.address.touched)">
+                        <div *ngIf="f.address.errors">
+                          <div *ngIf="f.address.errors.required">
+                            <small class="validate">*Địa chỉ công ty không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -42,6 +56,13 @@
                     <div class="col-sm-9">
                       <input type="text" class="form-control" placeholder="Nhập số điện thoại"
                              formControlName="phone"/>
+                      <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
+                        <div *ngIf="f.phone.errors">
+                          <div *ngIf="f.phone.errors.required">
+                            <small class="validate">*Số điện thoại không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -52,6 +73,13 @@
                         <option value="">Thành phố</option>
                         <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
                       </select>
+                      <div *ngIf="f.city_id.invalid && (f.city_id.dirty || f.city_id.touched)">
+                        <div *ngIf="f.city_id.errors">
+                          <div *ngIf="f.city_id.errors.required">
+                            <small class="validate">*Địa chỉ công ty không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -59,6 +87,13 @@
                                                                                                 class="pl-2">*</span></label>
                     <div class="col-sm-9">
                       <input type="number" class="form-control" placeholder="Số nhân sự" formControlName="employees"/>
+                      <div *ngIf="f.employees.invalid && (f.employees.dirty || f.employees.touched)">
+                        <div *ngIf="f.employees.errors">
+                          <div *ngIf="f.employees.errors.required">
+                            <small class="validate">*Trường này không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -67,6 +102,13 @@
                     <div class="col-sm-9">
                       <textarea type="text" class="form-control" placeholder="Thông tin về công ty" rows="5"
                                 formControlName="description"></textarea>
+                      <div *ngIf="f.description.invalid && (f.address.dirty || f.description.touched)">
+                        <div *ngIf="f.description.errors">
+                          <div *ngIf="f.description.errors.required">
+                            <small class="validate">*Thông tin công ty không được để trống!</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group row">

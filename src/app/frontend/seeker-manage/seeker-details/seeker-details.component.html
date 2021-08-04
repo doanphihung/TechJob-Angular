@@ -36,12 +36,26 @@
                                                                                           class="pl-2">*</span></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="Nhập họ và tên" formControlName="name">
+                        <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                          <div *ngIf="f.name.errors">
+                            <div *ngIf="f.name.errors.required">
+                              <small class="validate">*Tên người dùng không được để trống!</small>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-sm-3 col-form-label text-right label">Số điện thoại</label>
                       <div class="col-sm-9">
                         <input type="number" class="form-control" formControlName="phone">
+                        <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
+                          <div *ngIf="f.phone.errors">
+                            <div *ngIf="f.phone.errors.required">
+                              <small class="validate">*Số điện thoại không được để trống!</small>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -56,6 +70,13 @@
                                                                                              class="pl-2">*</span></label>
                       <div class="col-sm-9">
                         <input type="date" class="form-control" formControlName="birthday">
+                        <div *ngIf="f.birthday.invalid && (f.birthday.dirty || f.birthday.touched)">
+                          <div *ngIf="f.birthday.errors">
+                            <div *ngIf="f.birthday.errors.required">
+                              <small class="validate">*Trường này là bắt buộc!</small>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -64,6 +85,13 @@
                                                                                             class="pl-2">*</span></label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" formControlName="address">
+                        <div *ngIf="f.address.invalid && (f.address.dirty || f.address.touched)">
+                          <div *ngIf="f.address.errors">
+                            <div *ngIf="f.address.errors.required">
+                              <small class="validate">*Địa chỉ không được để trống!</small>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="form-group row">

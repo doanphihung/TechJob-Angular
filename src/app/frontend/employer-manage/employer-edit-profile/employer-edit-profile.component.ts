@@ -33,15 +33,19 @@ export class EmployerEditProfileComponent implements OnInit {
       name: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', Validators.required],
-      city_id: [''],
-      employees: [''],
-      description: [''],
+      city_id: ['', Validators.required],
+      employees: ['', Validators.required],
+      description: ['', Validators.required],
       image: [null],
       facebook: [''],
       map_link: ['']
     })
     this.findById();
     this.getAllCity();
+  }
+
+  get f() {
+    return  this.formEditEmployer.controls;
   }
 
   findById() {
