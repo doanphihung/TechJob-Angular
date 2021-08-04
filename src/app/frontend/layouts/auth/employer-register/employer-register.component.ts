@@ -52,7 +52,7 @@ export class EmployerRegisterComponent implements OnInit {
 
   getAllCity() {
     this.cityService.getAll().subscribe((res) => {
-      this.cities = res;
+      this.cities = res.cities;
     }, (error) => {
       console.log(error)
     },);
