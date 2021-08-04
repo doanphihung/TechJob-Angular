@@ -21,21 +21,19 @@
 
                 <div class="job-desc">
                   <div class="job-title">
-                    <a [routerLink]="['page/job/'+ job.id + '/details']"  style="color: #4141af">[{{job.city.name}}] {{job.title}} – Up
+                    <a [routerLink]="['page/job/'+ job.id + '/details']"  style="color: #4141af">[<span *ngIf="job.city">{{job.city.name}}</span>] {{job.title}} – Up
                       to {{job.upto | currency: 'VND'}}</a>
                   </div>
                   <div class="job-company">
-                    <a>{{job.category.name}}</a> | <a class="job-address"><i class="fa fa-map-marker"
-                                                                             aria-hidden="true"></i> {{job.city.name}}
-                  </a>
+                    <a *ngIf="job.category">{{job.category.name}}</a> | <a class="job-address" *ngIf="job.city"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job.city.name}}</a>
                   </div>
                   <div class="job-inf">
                     <div class="job-main-skill">
                       <i class="fa fa-code" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
                     </div>
                     <div class="job-salary" *ngIf="user_role == 1" style="color: orange">
-                      <span class="salary-min">{{job.from_salary | currency: 'VND'}}</span>
-                      <span class="salary-max">{{job.to_salary | currency: 'VND'}}</span>
+                      <span class="salary-min">{{job?.from_salary | currency: 'VND'}}</span>
+                      <span class="salary-max">{{job?.to_salary | currency: 'VND'}}</span>
                     </div>
                     <div class="job-salary" *ngIf="user_role == 3">
                       <a routerLink="/login" style="color: orange"><i class="fa fa-money" aria-hidden="true"></i> Đăng
@@ -43,16 +41,14 @@
                     </div>
                     <div class="job-deadline" style="color: #4141af">
                       <span><i class="fa fa-clock-o"
-                               aria-hidden="true"></i>  Hạn nộp: <strong>{{job.expire | date}}</strong></span>
+                               aria-hidden="true"></i>  Hạn nộp: <strong>{{job?.expire | date}}</strong></span>
                     </div>
                     <div class="job-deadline">
                     </div>
                   </div>
                   <div>
-                    <a style="color: #288728; font-size: small" class="job-address" *ngIf="job.status == 1"><i
-                      class="fa fa-check-circle" aria-hidden="true"></i> {{job.created_at | date}}</a>
-                    <a style="color: darkred; font-size: small" class="job-address" *ngIf="job.status == 0"><i
-                      class="fa fa-ban" aria-hidden="true"></i> Unactive</a>
+                    <a style="color: #288728; font-size: small" class="job-address"><i
+                      class="fa fa-check-circle" aria-hidden="true"></i> {{job?.created_at | date}}</a>
                   </div>
                 </div>
                 <div class="wrap-btn-appl" *ngIf="user_role == 1 || user_role == 3">
@@ -81,9 +77,9 @@
               <li *ngFor="let category of categories ">
                 <a href="#">
                 <span class="cate-img">
-                  <em>{{category.name}}</em>
+                  <em>{{category?.name}}</em>
                 </span>
-                  <span class="cate-count">({{category.jobs.length}})</span>
+                  <span class="cate-count">({{category?.jobs.length}})</span>
                 </a>
               </li>
 

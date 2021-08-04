@@ -9,14 +9,13 @@
           <th>#</th>
           <th>Tên</th>
           <th>Điện thoại</th>
-          <th>Địa chỉ</th>
           <th>Thành phố</th>
           <th>Trạng thái</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let company of totalEmployer, index as i">
+        <tr class="background-hover" *ngFor="let company of totalEmployer, index as i">
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-2">
@@ -26,11 +25,20 @@
           </td>
           <td>{{company?.user.name}}</td>
           <td>{{company?.phone}}</td>
-          <td>{{company?.address}}</td>
           <td>{{company?.city.name}}</td>
 
-          <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>Đã xác nhận</div></td>
-          <td>
+          <td *ngIf="company?.status == '1'">
+            <label class="switch">
+              <input type="checkbox" checked (change)="changeStatusEmployer($event, company?.id)">
+              <span class="slider round"></span>
+            </label>
+            <div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>Đã xác nhận</div></td>
+          <td *ngIf="!company?.status">
+            <label class="switch">
+              <input type="checkbox" (change)="changeStatusEmployer($event,company?.id)" >
+              <span class="slider round"></span>
+            </label>
+          <div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Đang chờ xác nhân...</div><td>
             <div class="d-flex order-actions">
               <a href="javascript:;" class=""><i class='bx bxs-edit'></i></a>
               <a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a>

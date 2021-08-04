@@ -62,7 +62,7 @@ export class EmployerEditJobComponent implements OnInit {
 
   getAllCity() {
     this.cityService.getAll().subscribe((res) => {
-      this.cities = res;
+      this.cities = res.cities;
     });
   }
 
