@@ -40,7 +40,6 @@ export class JobHomeComponent implements OnInit {
     this.jobService.getAllJob().subscribe((res) => {
 
       this.jobs = res;
-      console.log(res)
     });
   }
 
@@ -54,5 +53,4 @@ export class JobHomeComponent implements OnInit {
     this.categoryDataService.changeCategoryData(id);
     this.router.navigate(['/page/list'])
   }
-
 }
