@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 import {Router} from "@angular/router";
 import {CurrentUserService} from "../../../share/services/current-user.service";
 import {AuthService} from "../../../share/services/auth.service";
-import {ToastrService} from "ngx-toastr";
+import {CurrentUser} from "../../../share/models/current-user";
 
 @Component({
   selector: 'app-header',
@@ -12,14 +12,13 @@ import {ToastrService} from "ngx-toastr";
 })
 export class HeaderComponent implements OnInit {
   tokenDecode: any;
-  currentUser: any
+  currentUser!: CurrentUser;
   user_role: number = 3;
   token: any;
 
   constructor(private router: Router,
               private currentUserService: CurrentUserService,
-              private authService: AuthService,
-              private toastr: ToastrService) {
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -34,11 +33,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout().subscribe(res => {
-      this.toastr.success(res.message);
-    });
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    // this.authService.logout().subscribe(res => {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    // });
   }
-
 }

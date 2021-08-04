@@ -151,23 +151,22 @@
 
         </div>
       </div>
-      <!-- Side bar: Thông tin công ty -->
-<!--      <div class="col-md-4 col-sm-12 col-12">-->
-<!--        <div class="recuiter-info">-->
-<!--          <div class="recuiter-info-avt">-->
-<!--            <img src="http://localhost:8000/storage/company/{{employer.user.image}}">-->
-<!--          </div>-->
-<!--          <div class="clearfix list-rec">-->
-<!--            <h4>{{employer.user.name}}</h4>-->
-<!--            <ul>-->
-<!--              <li><i class="fa fa-map-marker ja-icn"></i>{{employer.address}}</li>-->
-<!--              <li><i class="fa fa-bar-chart ja-icn"></i>Quy mô nhân viên: {{employer.employees}}</li>-->
-<!--            </ul>-->
-<!--          </div>-->
-<!--        </div>-->
+      <div class="col-md-4 col-sm-12 col-12">
+        <div class="recuiter-info">
+          <div class="recuiter-info-avt">
+            <img src="http://localhost:8000/storage/company/{{employer?.user.image}}">
+          </div>
+          <div class="clearfix list-rec">
+            <h4>{{employer?.user.name}}</h4>
+            <ul>
+              <li><i class="fa fa-map-marker ja-icn"></i>{{employer?.address}}</li>
+              <li><i class="fa fa-bar-chart ja-icn"></i>Quy mô nhân viên: {{employer?.employees}}</li>
+            </ul>
+          </div>
+        </div>
 
-<!--      </div>-->
-      <!--      End side bar-->
+      </div>
+            End side bar
     </div>
   </div>
 </div>

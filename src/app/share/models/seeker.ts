@@ -4,7 +4,9 @@ export interface Seeker {
   address?: string,
   education?: string,
   experience?: string,
+  image?: string
   gender?: string,
   phone?: string,
   user_id?: number,
+  user?: any
 }

@@ -6,6 +6,7 @@ import {EmployerService} from "../../../share/services/employer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CityService} from "../../../share/services/city.service";
 import {ToastrService} from "ngx-toastr";
+import {Employer} from "../../../share/models/employer";
 
 @Component({
   selector: 'app-employer-edit-profile',
@@ -15,7 +16,7 @@ import {ToastrService} from "ngx-toastr";
 export class EmployerEditProfileComponent implements OnInit {
 
   cities!: City[];
-  employer: any;
+  employer!: Employer;
   formEditEmployer!: FormGroup
   file: any;
 

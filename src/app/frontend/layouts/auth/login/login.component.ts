@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../../share/services/auth.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -13,31 +13,38 @@ export class LoginComponent implements OnInit {
 
   formLogin!: FormGroup
   alert!: string;
+
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private router: Router,
-              private toastr: ToastrService) {}
+              private toastr: ToastrService) {
+  }
 
 
   ngOnInit(): void {
-    this.formLogin= this.formBuilder.group( {
+    this.formLogin = this.formBuilder.group({
       email: [''],
       password: ['']
     })
   }
 
-  submit () {
+  submit() {
     let user = this.formLogin.value;
     this.authService.login(user).subscribe(res => {
       if (res.status == 1) {
-        console.log(res.token);
         localStorage.setItem('token', res.token);
         this.toastr.success(res.message, 'Đăng nhập thành công!');
-        this.router.navigate(['']);
+        if (res.role == 1 || res.role == 2) {
+          this.router.navigate(['']);
+        } else {
+          this.router.navigate(['/admin']);
+        }
       } else {
         this.alert = res.message;
       }
-    }, error => {this.toastr.error('Đăng nhập không thành công!')})
+    }, error => {
+      this.toastr.error('Đăng nhập không thành công!')
+    })
   }
 
 }

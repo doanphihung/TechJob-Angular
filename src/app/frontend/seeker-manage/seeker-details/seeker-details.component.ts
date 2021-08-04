@@ -13,7 +13,8 @@ import {Seeker} from "../../../share/models/seeker";
 export class SeekerDetailsComponent implements OnInit {
 
   formUpdateSeeker!: FormGroup;
-  currentSeeker: any;
+  currentSeeker!: Seeker;
+  image: string | undefined;
 
   constructor(private formBuilder: FormBuilder,
               private seekerService: SeekerService,
@@ -41,6 +42,7 @@ export class SeekerDetailsComponent implements OnInit {
       this.formUpdateSeeker.patchValue(res);
       this.formUpdateSeeker.patchValue({name: res.user.name});
       this.currentSeeker = res;
+      this.image = 'http://localhost:8000/storage/seeker/' + this.currentSeeker.image;
       console.log(res)
     });
   }
