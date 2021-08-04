@@ -72,7 +72,11 @@ const routes: Routes = [
       {
         path: 'seeker/:id/details',
         component: SeekerDetailsComponent
-      }
+      },
+      {
+        path: '**',
+        redirectTo: ''
+      },
     ]
   }
 ];

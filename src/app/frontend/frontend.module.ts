@@ -32,8 +32,6 @@ import {JobDetailsComponent} from './job/job-details/job-details.component';
 import {JobsListComponent} from './main/jobs-list/jobs-list.component';
 import {SearchMainComponent} from './main/search-main/search-main.component';
 import {AngularPaginatorModule} from "angular-paginator";
-
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -57,7 +55,7 @@ import {AngularPaginatorModule} from "angular-paginator";
     EmployerEditJobComponent,
     EmployerListJobComponent,
     SeekerDetailsComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -71,7 +69,7 @@ import {AngularPaginatorModule} from "angular-paginator";
     MatTableModule,
     MatPaginatorModule,
     FormsModule,
-    AngularPaginatorModule
+    AngularPaginatorModule,
   ]
 })
 export class FrontendModule {

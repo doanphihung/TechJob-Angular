@@ -34,9 +34,8 @@ export class JobHomeComponent implements OnInit {
 
   getAllJob() {
     this.jobService.getAllJob().subscribe((res) => {
-      
+
       this.jobs = res;
-      console.log(res)
     });
   }
 
@@ -45,5 +44,4 @@ export class JobHomeComponent implements OnInit {
       this.categories = res;
     });
   }
-
 }

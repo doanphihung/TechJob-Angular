@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import jwtDecode from "jwt-decode";
 import {Router} from "@angular/router";
 import {CurrentUserService} from "../../../share/services/current-user.service";
-import {AuthService} from "../../../share/services/auth.service";
 import {CurrentUser} from "../../../share/models/current-user";
 import {Employer} from "../../../share/models/employer";
 import {ToastrService} from "ngx-toastr";
