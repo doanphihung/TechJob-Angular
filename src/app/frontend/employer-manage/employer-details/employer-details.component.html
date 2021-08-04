@@ -24,7 +24,8 @@
                 <li><i class="fa fa-map-marker icn-jd"></i><span>{{currentUser?.address}}</span></li>
                 <li><i class="fa fa-user-o icn-jd"></i>Nhân sự: <span>{{currentUser?.employees}}+</span></li>
                 <li><i class="fa fa-calendar icn-jd"></i><span>Monday - Friday</span></li>
-                <li><i class="fa fa-archive icn-jd"></i><span>Outsourcing</span></li>
+                <li style="color: #f80d0d;" *ngIf="!currentUser?.status"><i class="fa fa-times-circle" aria-hidden="true"></i> Đang chờ xác nhận...</li>
+                <li style="color: #79ef00;" *ngIf="currentUser?.status"><i class="fa fa-check-square-o" aria-hidden="true"></i> Đã xác nhận</li>
               </ul>
             </div>
           </div>
@@ -61,13 +62,11 @@
 
                 <div class="job-desc">
                   <div class="job-title">
-                    <a style="color: #4141af">[{{job.city.name}}] {{job.title}} – Up
+                    <a style="color: #4141af">[<span *ngIf="job.city">{{job.city.name}}</span>] {{job.title}} – Up
                       to {{job.upto | currency: 'VND'}}</a>
                   </div>
                   <div class="job-company">
-                    <a>{{job.category.name}}</a> | <a class="job-address"><i class="fa fa-map-marker"
-                                                                             aria-hidden="true"></i> {{job.city.name}}
-                  </a>
+                    <a *ngIf="job.category">{{job.category.name}}</a> | <a class="job-address" *ngIf="job.city"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job.city.name}}</a>
                   </div>
                   <div class="job-inf">
                     <div class="job-main-skill">
@@ -87,8 +86,7 @@
                   <div>
                     <a style="color: #288728; font-size: small" class="job-address" *ngIf="job.status == '1'"><i
                       class="fa fa-check-circle" aria-hidden="true"></i> {{job.created_at | date}}</a>
-                    <a style="color: darkred; font-size: small" class="job-address" *ngIf="!job.status"><i
-                      class="fa fa-ban" aria-hidden="true"></i> Unactive</a>
+                    <a style="color: #fa0202; font-size: small" class="job-address" *ngIf="!job.status"><i class="fa fa-lock" aria-hidden="true"></i> Đã khóa</a>
                   </div>
                 </div>
                 <div class="wrap-btn-appl">

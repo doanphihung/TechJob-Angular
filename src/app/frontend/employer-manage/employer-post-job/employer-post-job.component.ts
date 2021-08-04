@@ -58,7 +58,7 @@ export class EmployerPostJobComponent implements OnInit {
 
   getAllCity() {
     this.cityService.getAll().subscribe((res) => {
-      this.cities = res;
+      this.cities = res.cities;
     });
   }
 

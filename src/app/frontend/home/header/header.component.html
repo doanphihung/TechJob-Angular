@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto tnav-left tn-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Việc Làm IT</a>
+            <a class="nav-link" routerLink="/page/list">Việc Làm IT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="" role="button" data-toggle="dropdown"
@@ -62,7 +62,7 @@
             </div>
           </li>
           <li>
-            <a class="nav-link btn-employers" routerLink="/dashboard/employer/{{currentUser?.id}}/post" tabindex="-1" aria-disabled="true">Đăng
+            <a class="nav-link btn-employers" href="javascript:" (click)="navigatePostJob()" tabindex="-1" aria-disabled="true">Đăng
               tin tuyển dụng</a>
           </li>
         </ul>
