@@ -75,9 +75,9 @@
           <div class="catelog-list">
             <ul>
               <li *ngFor="let category of categories ">
-                <a href="#">
+                <a id="category-select">
                 <span class="cate-img">
-                  <em>{{category?.name}}</em>
+                  <em (click)="categorySearch(category.id)">{{category?.name}}</em>
                 </span>
                   <span class="cate-count">({{category?.jobs.length}})</span>
                 </a>
