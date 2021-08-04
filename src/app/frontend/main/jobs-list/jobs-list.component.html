@@ -1,4 +1,4 @@
-<app-search-main></app-search-main>
+<app-search-main (searchField)="search($event)" (searchCompanyField)="searchCompany($event)"></app-search-main>
 <div class="container search-wrapper">
   <div class="row">
     <div class="col-md-3 col-sm-12 col-12">
@@ -112,7 +112,8 @@
                                                     <p>-</p>
                                                 </span>
                             <span class="_fpblock">
-                                                    <input type="number" class="if-price" id="2" placeholder="1,000,000">
+                                                    <input type="number" class="if-price" id="2"
+                                                           placeholder="1,000,000">
                                                 </span>
                             <span class="_fpblock">
                                                      <button type="submit" class="sb-fprice"><i
@@ -254,35 +255,37 @@
       </div> <!-- ./ collapse -->
     </div>
     <div class="col-md-9 col-sm-12 col-12">
-      <h4 class="search-find">Tìm thấy 4 việc làm đang tuyển dụng</h4>
+      <h4 class="search-find">Tìm thấy {{jobs.length}} việc làm đang tuyển dụng</h4>
       <div class="job-board-wrap">
         <div class="job-group">
-          <div class="job pagi">
+
+          <div *ngFor="let job of jobs|angularPaginator: {itemsPerPage: this.itemsPerPage, currentPage: currentPage }
+          ;index as i" class="job pagi">
             <div class="job-content">
               <div class="job-logo">
                 <a href="#">
-                  <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                  <img src="assets/img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
                 </a>
               </div>
 
               <div class="job-desc">
                 <div class="job-title">
-                  <a href="#">[HCM] 02 Solution Architects–Up to $2000</a>
+                  <a href="#">{{job.title}}</a>
                 </div>
                 <div class="job-company">
-                  <a href="#">Fpt Software</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
-                                                                                    aria-hidden="true"></i>
-                  Đà Nẵng</a>
+                  <a href="#">{{job.company.name}}</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
+                                                                                            aria-hidden="true"></i>
+                  {{job.city.name}}</a>
                 </div>
 
                 <div class="job-inf">
                   <div class="job-main-skill">
-                    <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> Java</a>
+                    <i class="fa fa-code" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
                   </div>
                   <div class="job-salary">
                     <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="salary-min">15<em class="salary-unit">triệu</em></span>
-                    <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
+                    <span class="salary-min">{{job.from_salary}}<em class="salary-unit">triệu</em></span>
+                    <span class="salary-max">{{job.to_salary}} <em class="salary-unit">triệu</em></span>
                   </div>
                   <div class="job-deadline">
                     <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/12/2019</strong></span>
@@ -294,195 +297,47 @@
               </div>
             </div>
           </div>
-          <div class="job pagi">
-            <div class="job-content">
-              <div class="job-logo">
-                <a href="#">
-                  <img src="img/alipay-logo.png" class="job-logo-ima" alt="job-logo">
-                </a>
-              </div>
+          <nav angularPaginator [forceEllipses]="true" [rotate]="true" [maxSize]="5" aria-label="Pagination Component"
+               #paginator="angularPaginator" (pageChange)="currentPage = $event">
 
-              <div class="job-desc">
-                <div class="job-title">
-                  <a href="#">Fullstack .NET Developer (Angular/React)</a>
-                </div>
-                <div class="job-company">
-                  <a href="#">Orient Software</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
-                                                                                       aria-hidden="true"></i>
-                  Hà Nội</a>
-                </div>
+            <ng-container *ngIf="paginator.pages['length'] !== 0">
+              <div class="row">
+                <ul class="pagination pagination-sm ">
 
-                <div class="job-inf">
-                  <div class="job-main-skill">
-                    <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> .NET</a>
-                  </div>
-                  <div class="job-salary">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="salary-min">15<em class="salary-unit">triệu</em></span>
-                    <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
-                  </div>
-                  <div class="job-deadline">
-                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/02/2020</strong></span>
-                  </div>
-                </div>
-              </div>
-              <div class="wrap-btn-appl">
-                <a href="#" class="btn btn-appl">Apply Now</a>
-              </div>
-            </div>
-          </div>
-          <div class="job pagi">
-            <div class="job-content">
-              <div class="job-logo">
-                <a href="#">
-                  <img src="img/nvg-logo.png" class="job-logo-ima" alt="job-logo">
-                </a>
-              </div>
+                  <!-- direction link -->
+                  <li style="margin-left: 350px" class="page-item "
+                      [ngClass]="{'disabled': (paginator.currentPage === paginator.firstPage)}">
+                    <a class="page-link" (click)="paginator.toPreviousPage()">
+                      <span aria-hidden="true"><</span>
+                    </a>
+                  </li>
 
-              <div class="job-desc">
-                <div class="job-title">
-                  <a href="#">Frontend Developer (JavaScript, ReactJS)</a>
-                </div>
-                <div class="job-company">
-                  <a href="#">mgm technology</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
-                                                                                      aria-hidden="true"></i>
-                  Đà Nẵng</a>
-                </div>
+                  <!-- pagination array -->
+                  <li class="page-item " *ngFor="let page of paginator.pages"
+                      [ngClass]="{'active': page['active']}">
+                    <a class="page-link" (click)="!page['active'] && paginator.setCurrentPage(page['number'])">
+                      {{ page['text'] }}
+                    </a>
+                  </li>
 
-                <div class="job-inf">
-                  <div class="job-main-skill">
-                    <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> JavaScript, ReactJS</a>
-                  </div>
-                  <div class="job-salary">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="salary-min">15<em class="salary-unit">triệu</em></span>
-                    <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
-                  </div>
-                  <div class="job-deadline">
-                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/12/2019</strong></span>
-                  </div>
-                </div>
-              </div>
-              <div class="wrap-btn-appl">
-                <a href="#" class="btn btn-appl">Apply Now</a>
-              </div>
-            </div>
-          </div>
-          <div class="job pagi">
-            <div class="job-content">
-              <div class="job-logo">
-                <a href="#">
-                  <img src="img/luxoft-vietnam-logo.png" class="job-logo-ima" alt="job-logo">
-                </a>
-              </div>
+                  <!-- direction link -->
+                  <li class="page-item "
+                      [ngClass]="{'disabled': (paginator.currentPage === paginator.lastPage)}">
+                    <a class="page-link" (click)="paginator.toNextPage()">
+                      <span aria-hidden="true">></span>
+                    </a>
+                  </li>
 
-              <div class="job-desc">
-                <div class="job-title">
-                  <a href="#">IVI System Test Engineer</a>
-                </div>
-                <div class="job-company">
-                  <a href="#">NVG TECHNOLOGY</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
-                                                                                      aria-hidden="true"></i>
-                  Đà Nẵng</a>
-                </div>
+                </ul>
 
-                <div class="job-inf">
-                  <div class="job-main-skill">
-                    <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> Javascript</a>
-                  </div>
-                  <div class="job-salary">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="salary-min">15<em class="salary-unit">triệu</em></span>
-                    <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
-                  </div>
-                  <div class="job-deadline">
-                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/12/2019</strong></span>
-                  </div>
-                </div>
               </div>
-              <div class="wrap-btn-appl">
-                <a href="#" class="btn btn-appl">Apply Now</a>
-              </div>
-            </div>
-          </div>
-          <div class="job pagi">
-            <div class="job-content">
-              <div class="job-logo">
-                <a href="#">
-                  <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
-                </a>
-              </div>
-
-              <div class="job-desc">
-                <div class="job-title">
-                  <a href="#">[HCM] 02 Solution Architects–Up to $2000</a>
-                </div>
-                <div class="job-company">
-                  <a href="#">Fpt Software</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
-                                                                                    aria-hidden="true"></i>
-                  Đà Nẵng</a>
-                </div>
-
-                <div class="job-inf">
-                  <div class="job-main-skill">
-                    <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> Java</a>
-                  </div>
-                  <div class="job-salary">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="salary-min">15<em class="salary-unit">triệu</em></span>
-                    <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
-                  </div>
-                  <div class="job-deadline">
-                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/12/2019</strong></span>
-                  </div>
-                </div>
-              </div>
-              <div class="wrap-btn-appl">
-                <a href="#" class="btn btn-appl">Apply Now</a>
-              </div>
-            </div>
-          </div>
-          <div class="job pagi">
-            <div class="job-content">
-              <div class="job-logo">
-                <a href="#">
-                  <img src="img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
-                </a>
-              </div>
-
-              <div class="job-desc">
-                <div class="job-title">
-                  <a href="#">[HCM] 02 Solution Architects–Up to $2000</a>
-                </div>
-                <div class="job-company">
-                  <a href="#">Fpt Software</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
-                                                                                    aria-hidden="true"></i>
-                  Đà Nẵng</a>
-                </div>
-
-                <div class="job-inf">
-                  <div class="job-main-skill">
-                    <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> Java</a>
-                  </div>
-                  <div class="job-salary">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="salary-min">15<em class="salary-unit">triệu</em></span>
-                    <span class="salary-max">35 <em class="salary-unit">triệu</em></span>
-                  </div>
-                  <div class="job-deadline">
-                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/12/2019</strong></span>
-                  </div>
-                </div>
-              </div>
-              <div class="wrap-btn-appl">
-                <a href="#" class="btn btn-appl">Apply Now</a>
-              </div>
-            </div>
-          </div>
-
+            </ng-container>
+          </nav>
         </div>
-      </div>
+        <br>
 
+      </div>
     </div>
+
   </div>
 </div>
