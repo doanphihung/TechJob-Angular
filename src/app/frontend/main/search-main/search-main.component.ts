@@ -1,9 +1,10 @@
-import {Component, OnInit, Output,EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {CityService} from "../../../share/services/city.service";
 import {City} from "../../../share/models/city";
 import {LanguageService} from "../../../share/services/language.service";
 import {Language} from "../../../share/models/language";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {SearchDataService} from "../../../share/services/search-data.service";
 
 @Component({
   selector: 'app-search-main',
@@ -21,14 +22,22 @@ export class SearchMainComponent implements OnInit {
   @Output() searchField= new EventEmitter;
   @Output() searchCompanyField= new EventEmitter<string>();
 
+  searchDataTransfer: any;
+
   constructor(private cityService: CityService,
               private languageService: LanguageService,
               private formBuilder1:FormBuilder,
               private formBuilder2:FormBuilder,
+              private dataSearchService: SearchDataService,
   ) {
   }
 
   ngOnInit(): void {
+    this.getAllCity();
+    this.getAllLanguage()
+
+    this.dataSearchService.currentSearchData.subscribe(data => this.searchDataTransfer = data);
+
     this.formSearch1= this.formBuilder1.group({
       keyword:['',],
       language:['',],
@@ -38,11 +47,15 @@ export class SearchMainComponent implements OnInit {
     this.formSearch2=this.formBuilder2.group({
       companyKeyword:['',],
     })
+    this.updateFormSearch();
 
-    this.getAllCity();
-    this.getAllLanguage()
   }
 
+  updateFormSearch(){
+    if(this.searchDataTransfer){
+      this.formSearch1.patchValue(this.searchDataTransfer)
+    }
+  }
   getAllCity() {
     this.cityService.getAll().subscribe(res => {
       this.cities = res.cities;

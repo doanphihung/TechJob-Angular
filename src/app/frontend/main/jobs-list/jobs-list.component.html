@@ -99,7 +99,8 @@
             <div class="job-content">
               <div class="job-logo">
                 <a href="#">
-                  <img src="assets/frontend/img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                  <img src="http://localhost:8000/storage/company/{{job.company.image}}" class="job-logo-ima"
+                       alt="job-logo">
                 </a>
               </div>
 
@@ -108,9 +109,8 @@
                   <a href="#">{{job.title}}</a>
                 </div>
                 <div class="job-company">
-                  <a href="#">{{job.company.name}}</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
-                                                                                            aria-hidden="true"></i>
-                  {{job.city.name}}</a>
+                  <a *ngIf="job.company">{{job.company.name}}</a> | <a *ngIf="job.city" class="job-address">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>{{job.city.name}}</a>
                 </div>
 
                 <div class="job-inf">
@@ -128,7 +128,7 @@
                 </div>
               </div>
               <div class="wrap-btn-appl">
-                <a href="#" class="btn btn-appl">Apply Now</a>
+                <a href="#" class="btn btn-appl">Ứng tuyển</a>
               </div>
             </div>
           </div>
