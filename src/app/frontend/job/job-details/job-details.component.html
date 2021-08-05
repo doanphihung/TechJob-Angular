@@ -30,8 +30,7 @@
                   class="salary-min">{{job?.from_salary | currency: 'VND'}}</span>
                   <span class="salary-max">{{job?.to_salary | currency: 'VND'}}</span></li>
                 <li *ngIf="user_role == 3"><a routerLink="/login" style="color: orange"><i class="fa fa-usd icn-jd"></i>
-                  Đăng
-                  nhập để xem mức lương <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+                  Đăng nhập để xem mức lương <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
                 <li style="color: blue"><i class="fa fa-calendar icn-jd"></i>Hạn nộp: {{job?.expire | date}}</li>
               </ul>
             </div>

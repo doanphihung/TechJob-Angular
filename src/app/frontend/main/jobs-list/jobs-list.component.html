@@ -41,7 +41,7 @@
                 <p>
                   <a id="clickc2_advance" class="btnf btn-filter" data-toggle="collapse" href="#filter-price"
                      role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Mức Lương
+                    Mức Lương (Triệu đồng)
                     <i class="fa fa-angle-up" aria-hidden="true"></i>
                   </a>
                 </p>
@@ -118,10 +118,12 @@
                   <div class="job-main-skill">
                     <i class="fa fa-tags" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
                   </div>
+
                   <div class="job-salary" *ngIf="user_role == 1" style="color: orange">
                     <i class="fa fa-money" aria-hidden="true"></i>
                     <span class="salary-min">{{job.from_salary | currency:'VND'}}</span>
                     <span class="salary-max">{{job.to_salary | currency: 'VND'}}</span>
+
                   </div>
                   <div class="job-salary" *ngIf="user_role == 3">
                     <a routerLink="/login" style="color: orange"><i class="fa fa-money" aria-hidden="true"></i> Đăng

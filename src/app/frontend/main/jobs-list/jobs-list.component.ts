@@ -59,6 +59,12 @@ export class JobsListComponent implements OnInit {
     this.categoryDataService.currentCategoryData.subscribe(data => this.categoryDataTransfer = data)
     console.log(this.categoryDataTransfer)
 
+    this.token = localStorage.getItem('token');
+    if (this.token) {
+      this.tokenDecode = jwtDecode(this.token);
+      this.user_role = this.tokenDecode.user_role;
+    }
+
 
     this.getAllCategory();
     this.countJob();

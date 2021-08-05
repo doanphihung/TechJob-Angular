@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
               private toastr: ToastrService,
               private route: ActivatedRoute,
               private mailService: MailService,
-              private location: Location) {
-  }
+              private location: Location) {}
 
 
   ngOnInit(): void {

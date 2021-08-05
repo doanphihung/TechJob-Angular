@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { environment } from "../../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -17,11 +17,11 @@ export class EmployerService {
     return this.http.get(API_URL + `company/${id}/details`);
   }
 
-  public update(data:any, id: any): Observable<any> {
+  public update(data: any, id: any): Observable<any> {
     return this.http.post(API_URL + `company/${id}/update`, data);
   }
 
-  public postJob(data:any, id: any): Observable<any> {
+  public postJob(data: any, id: any): Observable<any> {
     return this.http.post(API_URL + `company/${id}/post`, data);
   }
 
@@ -44,5 +44,17 @@ export class EmployerService {
 
   public employerUnActive(id: any): Observable<any> {
     return this.http.get(API_URL + `admin/companies/${id}/change-unActive`)
+  }
+  public getAllCity(): Observable<any> {
+    return this.http.get(API_URL + 'cities');
+  }
+  public getAllCategory(): Observable<any> {
+    return this.http.get(API_URL + 'categories');
+  }
+  public createCity(data: any): Observable<any> {
+    return this.http.post(API_URL + 'admin/create', data);
+  }
+  public addCategory(data: any): Observable<any> {
+    return this.http.post(API_URL + 'admin/add', data);
   }
 }
