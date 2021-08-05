@@ -1,4 +1,4 @@
-import {Component, OnInit, Output,EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {CityService} from "../../../share/services/city.service";
 import {City} from "../../../share/models/city";
 import {LanguageService} from "../../../share/services/language.service";
@@ -18,6 +18,7 @@ export class SearchMainComponent implements OnInit {
   formSearch1:FormGroup
   // @ts-ignore
   formSearch2:FormGroup
+  @Input() searchDataTransfer:any;
   @Output() searchField= new EventEmitter;
   @Output() searchCompanyField= new EventEmitter<string>();
 
@@ -30,9 +31,9 @@ export class SearchMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.formSearch1= this.formBuilder1.group({
-      keyword:['',],
-      language:['',],
-      city:['',]
+      keyword:[this.searchDataTransfer.keyword,],
+      language:[this.searchDataTransfer.language,],
+      city:[this.searchDataTransfer.city,]
     })
 
     this.formSearch2=this.formBuilder2.group({

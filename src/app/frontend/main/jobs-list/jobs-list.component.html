@@ -1,4 +1,4 @@
-<app-search-main (searchField)="search($event)" (searchCompanyField)="searchCompany($event)"></app-search-main>
+<app-search-main [searchDataTransfer]="searchDataTransfer" (searchField)="search($event)" (searchCompanyField)="searchCompany($event)"></app-search-main>
 <div class="container search-wrapper">
   <div class="row">
     <div class="col-md-3 col-sm-12 col-12">
