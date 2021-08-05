@@ -32,12 +32,12 @@ export class JobHomeComponent implements OnInit {
       this.tokenDecode = jwtDecode(this.token);
       this.user_role = this.tokenDecode.user_role;
     }
-    this.getAllJob();
+    this.getFirstFiveJob();
     this.getAllCategory();
   }
 
-  getAllJob() {
-    this.jobService.getAllJob().subscribe((res) => {
+  getFirstFiveJob() {
+    this.jobService.getFirstFiveJob().subscribe((res) => {
 
       this.jobs = res;
     });

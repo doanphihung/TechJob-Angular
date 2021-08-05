@@ -26,6 +26,10 @@ export class JobService {
     return this.http.get(API_URL + 'jobs');
   }
 
+  public getFirstFiveJob(): Observable<any> {
+    return this.http.get(API_URL + 'jobs/5');
+  }
+
   public searchJobWithoutCity(data: any): Observable<any> {
     return this.http.post(API_URL + 'jobs/search-without-city', data)
   }

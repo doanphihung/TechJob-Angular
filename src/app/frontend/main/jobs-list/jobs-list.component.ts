@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {SearchDataService} from "../../../share/services/search-data.service";
 import {Subscription} from "rxjs";
 import {CategoryDataService} from "../../../share/services/category-data.service";
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-jobs-list',
@@ -31,6 +32,7 @@ export class JobsListComponent implements OnInit {
   // @ts-ignore
   subscription: Subscription;
 
+
   constructor(private jobService: JobService,
               private categoryService: CategoryService,
               private formBuider: FormBuilder,
@@ -44,6 +46,8 @@ export class JobsListComponent implements OnInit {
     console.log(this.searchDataTransfer)
     this.categoryDataService.currentCategoryData.subscribe(data => this.categoryDataTransfer = data)
     console.log(this.categoryDataTransfer)
+
+
     this.getAllCategory();
     this.countJob();
     if (this.searchDataTransfer == null) {
