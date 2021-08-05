@@ -6,7 +6,11 @@ import { MasterComponent } from './layouts/master/master.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CompanyListComponent } from './company/company-list/company-list.component';
 import { CompanyUnactiveListComponent } from './company/company-unactive-list/company-unactive-list.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { CityListComponent } from './city/city-list/city-list.component';
+import { CityCreateComponent } from './city/city-create/city-create.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryCreateComponent } from './category/category-create/category-create.component';
 
 
 @NgModule({
@@ -15,12 +19,18 @@ import {FormsModule} from "@angular/forms";
     MasterComponent,
        WelcomeComponent,
        CompanyListComponent,
-       CompanyUnactiveListComponent
+       CompanyUnactiveListComponent,
+       CityListComponent,
+       CityCreateComponent,
+       CategoryListComponent,
+       CategoryCreateComponent
   ],
     imports: [
         CommonModule,
         BackendRoutingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
+        
     ]
 })
 export class BackendModule { }

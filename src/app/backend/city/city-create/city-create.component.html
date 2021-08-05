@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-header" style="text-align: center"><h2>Thêm thành phố</h2></div>
+    <div class="card-body">
+      <div class="table-responsive">
+<form (ngSubmit)="submit()" [formGroup]="addCity" >
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
+</div>
+</div>
