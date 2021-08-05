@@ -13,6 +13,7 @@ import {EmployerEditProfileComponent} from "./employer-manage/employer-edit-prof
 import {EmployerEditJobComponent} from "./employer-manage/employer-edit-job/employer-edit-job.component";
 import {SeekerDetailsComponent} from "./seeker-manage/seeker-details/seeker-details.component";
 import {JobDetailsComponent} from "./job/job-details/job-details.component";
+import {SeekerJobsAppliedComponent} from "./seeker-manage/seeker-jobs-applied/seeker-jobs-applied.component";
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
       {
         path: 'seeker/:id/details',
         component: SeekerDetailsComponent
+      },
+      {
+        path: 'seeker/:id/jobs-applied',
+        component: SeekerJobsAppliedComponent
       },
       {
         path: '**',

@@ -1,3 +1,7 @@
 .validate {
   color: red;
 }
+
+.modal-content {
+  width: 96%;
+}

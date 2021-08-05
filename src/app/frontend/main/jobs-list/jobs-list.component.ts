@@ -8,6 +8,8 @@ import {SearchDataService} from "../../../share/services/search-data.service";
 import {Subscription} from "rxjs";
 import {CategoryDataService} from "../../../share/services/category-data.service";
 import jwtDecode from "jwt-decode";
+import {ToastrService} from "ngx-toastr";
+import {SeekerService} from "../../../share/services/seeker.service";
 
 @Component({
   selector: 'app-jobs-list',
@@ -31,17 +33,23 @@ export class JobsListComponent implements OnInit {
   categoryDataTransfer: any;
   // @ts-ignore
   subscription: Subscription;
-
   user_role: number = 3;
   token!: any
   tokenDecode!: any
-
+  idCurrentUser!: number;
 
   constructor(private jobService: JobService,
               private categoryService: CategoryService,
               private formBuider: FormBuilder,
               private dataSearchService: SearchDataService,
-              private categoryDataService: CategoryDataService) {
+              private categoryDataService: CategoryDataService,
+              private toastr: ToastrService,
+              private seekerService: SeekerService) {
+    this.token = localStorage.getItem('token');
+    if (this.token) {
+      this.tokenDecode = jwtDecode(this.token);
+      this.user_role = this.tokenDecode.user_role;
+    }
 
   }
 
@@ -135,10 +143,28 @@ export class JobsListComponent implements OnInit {
   }
 
   searchByRangeSalary() {
-    const salary = this.formSalary?.value;
-    this.jobService.searchJobBySalary(salary).subscribe(res => {
-      this.jobs = res.jobs
-    })
+    if (this.user_role == 3) {
+      this.toastr.warning('Bạn cần đăng nhập để sử dụng chức năng này!');
+    } else {
+      const salary = this.formSalary?.value;
+      this.jobService.searchJobBySalary(salary).subscribe(res => {
+        this.jobs = res.jobs
+      })
+    }
+  }
+
+  apply(idJob: any) {
+    if (this.idCurrentUser) {
+      this.seekerService.apply(this.idCurrentUser, idJob).subscribe( res => {
+        if (res.status == 1) {
+          this.toastr.success(res.message);
+        } else {
+          this.toastr.warning(res.message);
+        };
+      }, error => {this.toastr.error(error.error.message)})
+    } else {
+      this.toastr.warning('Bạn cần đăng nhập để ứng tuyển công việc!')
+    }
   }
 
 

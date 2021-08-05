@@ -32,6 +32,7 @@ import {JobDetailsComponent} from './job/job-details/job-details.component';
 import {JobsListComponent} from './main/jobs-list/jobs-list.component';
 import {SearchMainComponent} from './main/search-main/search-main.component';
 import {AngularPaginatorModule} from "angular-paginator";
+import { SeekerJobsAppliedComponent } from './seeker-manage/seeker-jobs-applied/seeker-jobs-applied.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -56,6 +57,7 @@ import {AngularPaginatorModule} from "angular-paginator";
     EmployerListJobComponent,
     SeekerDetailsComponent,
     JobDetailsComponent,
+    SeekerJobsAppliedComponent,
   ],
   imports: [
     CommonModule,

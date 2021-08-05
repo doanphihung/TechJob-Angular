@@ -31,7 +31,7 @@
                   <span class="salary-max">{{job?.to_salary | currency: 'VND'}}</span></li>
                 <li *ngIf="user_role == 3"><a routerLink="/login" style="color: orange"><i class="fa fa-usd icn-jd"></i>
                   Đăng nhập để xem mức lương <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
-                <li style="color: blue"><i class="fa fa-calendar icn-jd"></i>Hạn nộp: {{job?.expire}}</li>
+                <li style="color: blue"><i class="fa fa-calendar icn-jd"></i>Hạn nộp: {{job?.expire | date}}</li>
               </ul>
             </div>
             <div class="job-detail-header-tag">
@@ -47,7 +47,7 @@
         <div class="col-md-3 col-sm-12 col-12" *ngIf="user_role == 1 || user_role == 3">
           <div class="jd-header-wrap-right">
             <div class="jd-center">
-              <a href="#" class="btn btn-primary btn-apply">Ứng tuyển</a>
+              <a href="javascript:" (click)="apply(job?.id)" class="btn btn-primary btn-apply">Ứng tuyển</a>
             </div>
           </div>
         </div>
@@ -64,10 +64,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-sm-12 col-12 clear-left">
+        <div class="main-wrapper">
+
         <button style="width: 100%" type="button" class="btn btn-dark" data-bs-toggle="modal"
-                data-bs-target="#exampleModal"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Giới thiệu cho bạn
-          bè
+                data-bs-target="#exampleModal"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Giới thiệu cho bạn bè
         </button>
+        </div>
       </div>
     </div>
 

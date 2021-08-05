@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
               private toastr: ToastrService,
               private route: ActivatedRoute,
               private mailService: MailService,
-              private location:Location) {
-  }
+              private location: Location) {}
 
 
   ngOnInit(): void {
@@ -49,7 +48,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token);
         this.toastr.success(res.message, 'Đăng nhập thành công!');
         if (res.role == 1 || res.role == 2) {
-          // this.router.navigate(['']);
           this.location.back();
         } else {
           this.router.navigate(['/admin']);
