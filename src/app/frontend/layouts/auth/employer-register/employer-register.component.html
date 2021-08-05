@@ -122,19 +122,22 @@
                   <input type="number" class="input form-control-lgin" placeholder="Số nhân viên"
                          formControlName="employees">
                 </div>
-                <small></small>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
                   <input type="text" class="input form-control-lgin" placeholder="Link google map"
                          formControlName="map_link">
                 </div>
-                <small></small>
+              </div>
+
+              <div class="input-div one">
+                  <input id="accept" type="checkbox" class="input form-control-lgin" formControlName="accept">
+                   <a href="https://vi.wikipedia.org/wiki/Wikipedia:%C4%90i%E1%BB%81u_kho%E1%BA%A3n_S%E1%BB%AD_d%E1%BB%A5ng">Bạn có chấp nhận điều khoản của chúng tôi?</a>
               </div>
 
               <div class="form-group d-block frm-text">
                 <a href="#" class="fg-login d-inline-block"></a>
-                <a href="#" class="fg-login float-right d-inline-block">Bạn đã có tài khoản? Đăng Nhập</a>
+                <a routerLink="/login" href="javascript:" class="fg-login float-right d-inline-block">Bạn đã có tài khoản? Đăng Nhập</a>
               </div>
               <div *ngIf="formRegister.valid">
               <button type="submit" class="btn btn-primary float-right btn-login d-block w-100" >Đăng Ký Nhà Tuyển Dụng</button>

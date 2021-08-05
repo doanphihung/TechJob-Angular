@@ -33,6 +33,7 @@ export class EmployerRegisterComponent implements OnInit {
       city_id: ['', Validators.required],
       employees: [''],
       map_link: [''],
+      accept: ['', Validators.required],
     },
       {validators: this.MustMatch('password', 'confirmpassword')
     });
@@ -64,10 +65,10 @@ export class EmployerRegisterComponent implements OnInit {
   submit() {
     let data = this.formRegister.value;
     this.authService.employerRegister(data).subscribe(res => {
-      console.log(res);
       if (res.status == 1) {
-        this.toastr.success(res.message);
-        this.router.navigate(['/login']);
+        this.toastr.success('Bạn hãy xác thực Email để tiếp tục dịch vụ!', 'Đăng ký tài khoản thành công!', {
+          timeOut: 5000
+        });
       } else {
         this.toastr.error(res.message);
       }

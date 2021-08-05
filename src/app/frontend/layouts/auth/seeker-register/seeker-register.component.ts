@@ -57,9 +57,8 @@ export class SeekerRegisterComponent implements OnInit {
     console.log(data)
     this.authService.seekerRegister(data).subscribe(res => {
       if (res.status == 1) {
-        this.toastr.success(res.message);
-        this.router.navigate(['/login']);
-      } else if (res.status == 0) {
+        this.toastr.success('Bạn hãy xác thực Email để tiếp tục dịch vụ!', 'Đăng ký tài khoản thành công!');
+        } else if (res.status == 0) {
         this.toastr.error(res.message);
       } else {
         this.toastr.error(res.message);
