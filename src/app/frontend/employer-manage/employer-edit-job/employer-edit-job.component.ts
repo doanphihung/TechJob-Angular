@@ -42,7 +42,7 @@ export class EmployerEditJobComponent implements OnInit {
       to_salary: ['', Validators.required],
       upto: [''],
       city_id: ['', Validators.required],
-      expire: [''],
+      expire: ['', Validators.required],
       type_of_job: ['', Validators.required],
       status:[''],
     })

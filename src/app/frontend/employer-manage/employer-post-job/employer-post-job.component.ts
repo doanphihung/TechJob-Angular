@@ -39,7 +39,7 @@ export class EmployerPostJobComponent implements OnInit {
       experience: ['', Validators.required],
       from_salary: ['', Validators.required],
       to_salary: ['', Validators.required],
-      upto: ['', Validators.required],
+      upto: [''],
       city_id: ['', Validators.required],
       expire: ['', Validators. required],
       type_of_job: ['', Validators.required]

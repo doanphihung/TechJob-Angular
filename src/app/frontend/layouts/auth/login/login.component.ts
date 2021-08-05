@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {MailService} from "../../../../share/services/mail.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private toastr: ToastrService,
               private route: ActivatedRoute,
-              private mailService: MailService) {
+              private mailService: MailService,
+              private location: Location) {
   }
 
 
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token);
         this.toastr.success(res.message, 'Đăng nhập thành công!');
         if (res.role == 1 || res.role == 2) {
-          this.router.navigate(['']);
+          this.location.back();
         } else {
           this.router.navigate(['/admin']);
         }

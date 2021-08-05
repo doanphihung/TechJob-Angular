@@ -4,7 +4,7 @@
     <div class="col-md-3 col-sm-12 col-12">
       <a id="click_advance" class="btn btn-c-filter" type="button" data-toggle="collapse" data-target="#collapseExample"
          aria-expanded="true" aria-controls="collapseExample">
-        <i class="pr-2 fa fa-times" id="icon-s-sw" aria-hidden="true"></i>Filter &amp; Refind
+        <i class="pr-2 fa fa-times" id="icon-s-sw" aria-hidden="true"></i>Tìm kiếm ({{jobs.length}} kết quả)
       </a>
 
       <div class="collapse show" id="collapseExample" style="">
@@ -37,6 +37,7 @@
                   </div>
                 </div>
 
+                <div>
                 <p>
                   <a id="clickc2_advance" class="btnf btn-filter" data-toggle="collapse" href="#filter-price"
                      role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -51,13 +52,13 @@
                         <div class="filter-topic filter-input-price">
                           <form class="al-price-filter" [formGroup]="formSalary" (ngSubmit)="searchByRangeSalary()">
                             <span class="_fpblock">
-                              <input type="number" class="if-price" id="1" formControlName="from_salary" placeholder="50,000">
+                              <input type="number" class="if-price" id="1" formControlName="from_salary">
                             </span>
                             <span class="_fpblock _line">
                               <p>-</p>
                             </span>
                             <span class="_fpblock">
-                              <input type="number" class="if-price" id="2" formControlName="to_salary" placeholder="1,000,000">
+                              <input type="number" class="if-price" id="2" formControlName="to_salary">
                             </span>
                             <span class="_fpblock">
                               <button type="submit" class="sb-fprice"><i
@@ -68,6 +69,7 @@
                       </div>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -90,10 +92,9 @@
       </div> <!-- ./ collapse -->
     </div>
     <div class="col-md-9 col-sm-12 col-12">
-      <h4 class="search-find">Tìm thấy {{jobs.length}} việc làm đang tuyển dụng</h4>
+      <div style="height: 30px"> <h4 class="search-find" style=""></h4> </div>
       <div class="job-board-wrap">
         <div class="job-group">
-
           <div *ngFor="let job of jobs|angularPaginator: {itemsPerPage: this.itemsPerPage, currentPage: currentPage }
           ;index as i" class="job pagi">
             <div class="job-content">
@@ -106,29 +107,33 @@
 
               <div class="job-desc">
                 <div class="job-title">
-                  <a href="#">{{job.title}}</a>
+                  <a [routerLink]="['/page/job/'+ job.id + '/details']" style="color: #4141af">{{job.title}}</a>
                 </div>
                 <div class="job-company">
-                  <a *ngIf="job.company">{{job.company.name}}</a> | <a *ngIf="job.city" class="job-address">
-                  <i class="fa fa-map-marker" aria-hidden="true"></i>{{job.city.name}}</a>
+                  <a *ngIf="job.company">{{job.company.name}}</a>  <a *ngIf="job.city" class="job-address">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i> {{job.city.name}}</a>
                 </div>
 
                 <div class="job-inf">
                   <div class="job-main-skill">
-                    <i class="fa fa-code" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
+                    <i class="fa fa-tags" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
                   </div>
-                  <div class="job-salary">
+                  <div class="job-salary" *ngIf="user_role == 1" style="color: orange">
                     <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="salary-min">{{job.from_salary}}<em class="salary-unit">triệu</em></span>
-                    <span class="salary-max">{{job.to_salary}} <em class="salary-unit">triệu</em></span>
+                    <span class="salary-min">{{job.from_salary | currency:'VND'}}</span>
+                    <span class="salary-max">{{job.to_salary | currency: 'VND'}}</span>
                   </div>
-                  <div class="job-deadline">
-                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/12/2019</strong></span>
+                  <div class="job-salary" *ngIf="user_role == 3">
+                    <a routerLink="/login" style="color: orange"><i class="fa fa-money" aria-hidden="true"></i> Đăng
+                      nhập để xem mức lương <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="job-deadline" style="color: #4141af">
+                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>{{job.expire | date}}</strong></span>
                   </div>
                 </div>
               </div>
               <div class="wrap-btn-appl">
-                <a href="#" class="btn btn-appl">Ứng tuyển</a>
+                <a href="javascript:" (click)="apply(job?.id)" class="btn btn-appl">Ứng tuyển</a>
               </div>
             </div>
           </div>

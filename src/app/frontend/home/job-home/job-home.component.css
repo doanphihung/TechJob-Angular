@@ -1,4 +1,30 @@
-#category-select:hover{
+#category-select:hover {
   text-decoration: underline;
   cursor: pointer;
 }
+
+.cate-img:hover {
+  color: #0a53be;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.job-content:hover {
+  background-color: #e0dfdf;
+}
+
+em:hover {
+  color: blue;
+}
+
+
+span.cate-count {
+  color: #443f3f;
+
+}
+
+span.cate-count:hover {
+  color: blue;
+  text-decoration: underline;
+}
+

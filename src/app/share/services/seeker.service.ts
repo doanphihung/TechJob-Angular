@@ -20,4 +20,11 @@ export class SeekerService {
     return this.http.post(API_URL + `seeker/${id}/update`, data);
   }
 
+  public apply(idSeeker: any, idJob: any): Observable<any> {
+    return this.http.get(API_URL + `${idSeeker}/seeker/${idJob}/job`);
+  }
+  public getAllJobsApplied(id: any): Observable<any> {
+    return this.http.get(API_URL + `seeker/${id}/jobs-applied`);
+  }
+
 }

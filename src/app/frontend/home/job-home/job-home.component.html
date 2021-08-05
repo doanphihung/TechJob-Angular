@@ -21,15 +21,14 @@
 
                 <div class="job-desc">
                   <div class="job-title">
-                    <a [routerLink]="['page/job/'+ job.id + '/details']"  style="color: #4141af">[<span *ngIf="job.city">{{job.city.name}}</span>] {{job.title}} – Up
-                      to {{job.upto | currency: 'VND'}}</a>
+                    <a [routerLink]="['page/job/'+ job.id + '/details']"  style="color: #4141af">{{job.title}}</a>
                   </div>
                   <div class="job-company">
-                    <a *ngIf="job.category">{{job.category.name}}</a> | <a class="job-address" *ngIf="job.city"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job.city.name}}</a>
+                    <a *ngIf="job.category">{{job.category.name}}</a>  <a class="job-address" *ngIf="job.city"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job.city.name}}</a>
                   </div>
                   <div class="job-inf">
                     <div class="job-main-skill">
-                      <i class="fa fa-code" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
+                      <i class="fa fa-tags" aria-hidden="true"></i><a href="#">{{job.language}}</a>
                     </div>
                     <div class="job-salary" *ngIf="user_role == 1" style="color: orange">
                       <span class="salary-min">{{job?.from_salary | currency: 'VND'}}</span>
@@ -52,7 +51,7 @@
                   </div>
                 </div>
                 <div class="wrap-btn-appl" *ngIf="user_role == 1 || user_role == 3">
-                  <a href="#" class="btn btn-appl">Ứng tuyển</a>
+                  <a href="javascript:" (click)="apply(job?.id)" class="btn btn-appl">Ứng tuyển</a>
                 </div>
               </div>
             </div>
