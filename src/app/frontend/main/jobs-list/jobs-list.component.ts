@@ -32,6 +32,10 @@ export class JobsListComponent implements OnInit {
   // @ts-ignore
   subscription: Subscription;
 
+  user_role: number = 3;
+  token!: any
+  tokenDecode!: any
+
 
   constructor(private jobService: JobService,
               private categoryService: CategoryService,
@@ -46,6 +50,12 @@ export class JobsListComponent implements OnInit {
     console.log(this.searchDataTransfer)
     this.categoryDataService.currentCategoryData.subscribe(data => this.categoryDataTransfer = data)
     console.log(this.categoryDataTransfer)
+
+    this.token = localStorage.getItem('token');
+    if (this.token) {
+      this.tokenDecode = jwtDecode(this.token);
+      this.user_role = this.tokenDecode.user_role;
+    }
 
 
     this.getAllCategory();

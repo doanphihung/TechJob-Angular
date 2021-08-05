@@ -117,10 +117,18 @@
                   <div class="job-main-skill">
                     <i class="fa fa-code" aria-hidden="true"></i> <a href="#">{{job.language}}</a>
                   </div>
-                  <div class="job-salary">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="salary-min">{{job.from_salary}}<em class="salary-unit">triệu</em></span>
-                    <span class="salary-max">{{job.to_salary}} <em class="salary-unit">triệu</em></span>
+<!--                  <div class="job-salary">-->
+<!--                    <i class="fa fa-money" aria-hidden="true"></i>-->
+<!--                    <span class="salary-min">{{job.from_salary}}<em class="salary-unit">triệu</em></span>-->
+<!--                    <span class="salary-max">{{job.to_salary}} <em class="salary-unit">triệu</em></span>-->
+<!--                  </div>-->
+                  <div class="job-salary" *ngIf="user_role == 1" style="color: orange">
+                    <span class="salary-min">{{job?.from_salary | currency: 'VND'}}</span>
+                    <span class="salary-max">{{job?.to_salary | currency: 'VND'}}</span>
+                  </div>
+                  <div class="job-salary" *ngIf="user_role == 3">
+                    <a routerLink="/login" style="color: orange"><i class="fa fa-money" aria-hidden="true"></i> Đăng
+                      nhập để xem mức lương <i class="fa fa-sign-in" aria-hidden="true"></i></a>
                   </div>
                   <div class="job-deadline">
                     <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>31/12/2019</strong></span>
