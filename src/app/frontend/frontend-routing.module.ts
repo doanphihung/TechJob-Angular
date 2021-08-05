@@ -32,6 +32,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'verify-email/:confirmation_code',
+    component: LoginComponent
+  },
+  {
     path: 'page',
     component: MainComponent,
     children: [

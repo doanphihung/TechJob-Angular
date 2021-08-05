@@ -15,4 +15,9 @@ export class MailService {
     return this.http.post(API_URL + `forward/${id}/job`, data);
   }
 
+  public verifyEmail(confirmation_code: any): Observable<any> {
+    // @ts-ignore
+    return this.http.post(API_URL + `verify-email/${confirmation_code}`);
+  }
+
 }

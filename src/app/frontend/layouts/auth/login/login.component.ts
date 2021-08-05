@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../../share/services/auth.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {MailService} from "../../../../share/services/mail.service";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,9 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private router: Router,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private route: ActivatedRoute,
+              private mailService: MailService) {
   }
 
 
@@ -26,6 +29,15 @@ export class LoginComponent implements OnInit {
       email: [''],
       password: ['']
     })
+
+    if (this.router.url.startsWith('/verify-email/')) {
+      const confirmation_code = this.route.snapshot.paramMap.get('confirmation_code');
+      this.mailService.verifyEmail(confirmation_code).subscribe(res => {
+        this.toastr.success(res.message, 'Xác thực Email thành công!');
+      }, error => {
+        this.toastr.error(error.error.message);
+      })
+    }
   }
 
   submit() {
