@@ -139,8 +139,8 @@
                 <a href="#" class="fg-login d-inline-block"></a>
                 <a routerLink="/login" href="javascript:" class="fg-login float-right d-inline-block">Bạn đã có tài khoản? Đăng Nhập</a>
               </div>
-              <div *ngIf="formRegister.valid">
-              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100" >Đăng Ký Nhà Tuyển Dụng</button>
+              <div>
+              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100" [disabled]="formRegister.invalid">Đăng Ký Nhà Tuyển Dụng</button>
               </div>
               <div class="form-group d-block w-100 mt-5">
                 <div class="text-or text-center">

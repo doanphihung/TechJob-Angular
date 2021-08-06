@@ -44,7 +44,9 @@
         <div class="user-box dropdown">
           <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button"
              data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="http://localhost:8000/storage/admin/{{admin?.image}}" class="user-img" alt="user avatar">
+            <img *ngIf="admin?.image" src="http://localhost:8000/storage/admin/{{admin?.image}}" class="user-img" alt="user avatar">
+            <img *ngIf="!admin?.image" src="https://previews.123rf.com/images/artinspiring/artinspiring1811/artinspiring181100743/127434465-portrait-of-young-man-beautiful-handsome-boy-avatar-guy-smiling-male-character-isolated-vector-illus.jpg" alt="" style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
+
             <div class="user-info ps-3">
               <p class="user-name mb-0">{{admin?.name}}</p>
               <p class="designattion mb-0">Admin</p>

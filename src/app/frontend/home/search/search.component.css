@@ -9,3 +9,6 @@ select#s-provinces {
   height: 100%;
   border-radius: 5px;
 }
+.sinput:hover {
+  background-color: #e7e4e4;
+}

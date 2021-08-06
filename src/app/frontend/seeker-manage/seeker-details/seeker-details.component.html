@@ -25,7 +25,7 @@
                         <label for="imageUpload"></label>
                       </div>
                       <div class="avatar-preview">
-                        <div id="imagePreview">
+                        <div id="imagePreview" style="background-image: url(https://e7.pngegg.com/pngimages/912/218/png-clipart-glasses-avatar-computer-icons-man-with-glasses-glasses-avatar-thumbnail.png);">
                         </div>
                       </div>
                     </div>
@@ -115,12 +115,14 @@
       <div class="col-md-4 col-sm-12 col-12">
         <div class="recuiter-info">
           <div class="recuiter-info-avt">
-            <img src="http://localhost:8000/storage/seeker/{{currentSeeker?.image}}">
+            <img *ngIf="currentSeeker?.image" src="http://localhost:8000/storage/seeker/{{currentSeeker?.image}}">
+            <img *ngIf="!currentSeeker?.image" src="https://previews.123rf.com/images/artinspiring/artinspiring1811/artinspiring181100743/127434465-portrait-of-young-man-beautiful-handsome-boy-avatar-guy-smiling-male-character-isolated-vector-illus.jpg" alt="">
+
           </div>
           <div class="clearfix list-rec">
             <h4>{{currentSeeker?.user.name}}</h4>
             <ul>
-              <li><a href="#">Việc làm đã nộp <strong>()</strong></a></li>
+              <li><a href="#"><strong></strong></a></li>
             </ul>
           </div>
         </div>

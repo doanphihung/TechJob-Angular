@@ -14,6 +14,9 @@ import {EmployerEditJobComponent} from "./employer-manage/employer-edit-job/empl
 import {SeekerDetailsComponent} from "./seeker-manage/seeker-details/seeker-details.component";
 import {JobDetailsComponent} from "./job/job-details/job-details.component";
 import {SeekerJobsAppliedComponent} from "./seeker-manage/seeker-jobs-applied/seeker-jobs-applied.component";
+import {IsLoggedInGuard} from "../share/guards/is-logged-in.guard";
+import {IsSeekerGuard} from "../share/guards/is-seeker.guard";
+import {IsEmployerGuard} from "../share/guards/is-employer.guard";
 
 const routes: Routes = [
   {
@@ -30,6 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [IsLoggedInGuard],
     component: LoginComponent
   },
   {
@@ -60,26 +64,32 @@ const routes: Routes = [
     children: [
       {
         path: 'employer/:id/details',
+        canActivate: [IsEmployerGuard],
         component: EmployerDetailsComponent
       },
       {
         path: 'employer/:id/edit',
+        canActivate: [IsEmployerGuard],
         component: EmployerEditProfileComponent
       },
       {
         path: 'employer/:id/post',
+        canActivate: [IsEmployerGuard],
         component: EmployerPostJobComponent
       },
       {
         path: 'employer/edit/:id/job',
+        canActivate: [IsEmployerGuard],
         component: EmployerEditJobComponent
       },
       {
         path: 'seeker/:id/details',
+        canActivate: [IsSeekerGuard],
         component: SeekerDetailsComponent
       },
       {
         path: 'seeker/:id/jobs-applied',
+        canActivate: [IsSeekerGuard],
         component: SeekerJobsAppliedComponent
       },
       {

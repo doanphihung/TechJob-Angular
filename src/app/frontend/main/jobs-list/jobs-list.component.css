@@ -4,7 +4,13 @@ li{
 #category:hover{
   text-decoration: underline;
   cursor: pointer;
+  color: #0068fd !important;
 }
+
 .job-content:hover {
-  background-color: #e0dfdf;
+  background-color: #eae9e9;
+}
+
+.if-price:hover {
+  background-color: #eeeeee;
 }

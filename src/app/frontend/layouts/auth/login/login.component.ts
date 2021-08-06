@@ -48,7 +48,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token);
         this.toastr.success(res.message, 'Đăng nhập thành công!');
         if (res.role == 1 || res.role == 2) {
-          this.location.back();
+          // this.location.back();
+          this.router.navigate(['']);
         } else {
           this.router.navigate(['/admin']);
         }
