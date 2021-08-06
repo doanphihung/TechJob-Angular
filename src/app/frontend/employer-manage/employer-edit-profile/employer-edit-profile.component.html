@@ -155,7 +155,9 @@
       <div class="col-md-4 col-sm-12 col-12">
         <div class="recuiter-info">
           <div class="recuiter-info-avt">
-            <img src="http://localhost:8000/storage/company/{{employer?.user.image}}">
+            <img  *ngIf="employer?.user.image" src="http://localhost:8000/storage/company/{{employer?.user.image}}">
+            <img *ngIf="!employer?.user.image" src="https://image.freepik.com/free-vector/company-logo-with-avatar-design_1465-2.jpg">
+
           </div>
           <div class="clearfix list-rec">
             <h4>{{employer?.user.name}}</h4>

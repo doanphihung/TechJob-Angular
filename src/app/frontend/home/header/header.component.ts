@@ -5,6 +5,7 @@ import {CurrentUserService} from "../../../share/services/current-user.service";
 import {CurrentUser} from "../../../share/models/current-user";
 import {Employer} from "../../../share/models/employer";
 import {ToastrService} from "ngx-toastr";
+import {AuthService} from "../../../share/services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router,
               private currentUserService: CurrentUserService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -44,9 +46,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    // this.authService.logout().subscribe(res => {
+    this.authService.logout().subscribe(res => {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
-    // });
+    });
   }
 }

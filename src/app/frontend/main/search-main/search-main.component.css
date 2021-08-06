@@ -1,3 +1,23 @@
 .btn-search {
   font-size: 11px;
 }
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: blue;
+}
+.nav-tabs .nav-link {
+  color: #878585;
+}
+
+.s-input-group span i {
+  line-height: 37px;
+}
+
+.search-title:hover {
+  background-color: #f1f0f0 !important;
+}
+
+.button-search {
+  line-height: 1.2 !important;
+  font-size: 14px;
+}
+

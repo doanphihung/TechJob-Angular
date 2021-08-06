@@ -6,7 +6,9 @@
         <div class="col-md-2 col-sm-12 col-12">
           <div class="job-detail-header-logo">
             <a>
-              <img src="http://localhost:8000/storage/company/{{currentUser?.user.image}}" class="job-logo-ima"
+              <img *ngIf="currentUser?.user.image" src="http://localhost:8000/storage/company/{{currentUser?.user.image}}" class="job-logo-ima"
+                   alt="job-logo">
+              <img *ngIf="!currentUser?.user.image" src="https://image.freepik.com/free-vector/company-logo-with-avatar-design_1465-2.jpg" class="job-logo-ima"
                    alt="job-logo">
             </a>
           </div>

@@ -19,18 +19,6 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/page/list">Việc Làm IT</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-              VI
-            </a>
-            <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">English</a>
-            </div>
-          </li>
-<!--          <li class="nav-item active">-->
-<!--            <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i> <span class="hidden-text">Tìm kiếm</span></a>-->
-<!--          </li>-->
         </ul>
         <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav" *ngIf="user_role == 3">
 
@@ -47,8 +35,8 @@
         </ul>
         <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav" *ngIf="user_role == 2">
           <li class="nav-item">
-            <img src="http://localhost:8000/storage/company/{{currentUser?.image}}" alt=""
-                 style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
+            <img *ngIf="currentUser?.image" src="http://localhost:8000/storage/company/{{currentUser?.image}}" alt="" style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
+            <img *ngIf="!currentUser?.image" src="https://image.freepik.com/free-vector/company-logo-with-avatar-design_1465-2.jpg" alt="" style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
@@ -63,8 +51,9 @@
         </ul>
         <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav" *ngIf="user_role == 1">
           <li class="nav-item">
-            <img src="http://localhost:8000/storage/seeker/{{currentUser?.image}}" alt=""
+            <img  *ngIf="currentUser?.image" src="http://localhost:8000/storage/seeker/{{currentUser?.image}}" alt=""
                  style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
+            <img *ngIf="!currentUser?.image" src="https://previews.123rf.com/images/artinspiring/artinspiring1811/artinspiring181100743/127434465-portrait-of-young-man-beautiful-handsome-boy-avatar-guy-smiling-male-character-isolated-vector-illus.jpg" alt="" style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
@@ -79,8 +68,9 @@
         </ul>
         <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav" *ngIf="user_role == 0">
           <li class="nav-item">
-            <img src="http://localhost:8000/storage/seeker/{{currentUser?.image}}" alt=""
+            <img *ngIf="currentUser?.image" src="http://localhost:8000/storage/seeker/{{currentUser?.image}}" alt=""
                  style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
+            <img *ngIf="!currentUser?.image" src="https://previews.123rf.com/images/artinspiring/artinspiring1811/artinspiring181100743/127434465-portrait-of-young-man-beautiful-handsome-boy-avatar-guy-smiling-male-character-isolated-vector-illus.jpg" alt="" style="vertical-align: middle; width: 35px; height: 35px; border-radius: 50%;">
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"

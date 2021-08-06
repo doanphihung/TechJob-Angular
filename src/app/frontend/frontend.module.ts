@@ -24,7 +24,6 @@ import {EmployerEditProfileComponent} from './employer-manage/employer-edit-prof
 import {EmployerEditJobComponent} from './employer-manage/employer-edit-job/employer-edit-job.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
-import {EmployerListJobComponent} from './employer-manage/employer-list-job/employer-list-job.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {SeekerDetailsComponent} from './seeker-manage/seeker-details/seeker-details.component';
@@ -54,7 +53,6 @@ import { SeekerJobsAppliedComponent } from './seeker-manage/seeker-jobs-applied/
     EmployerPostJobComponent,
     EmployerEditProfileComponent,
     EmployerEditJobComponent,
-    EmployerListJobComponent,
     SeekerDetailsComponent,
     JobDetailsComponent,
     SeekerJobsAppliedComponent,

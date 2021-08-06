@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {IsAdminGuard} from "./share/guards/is-admin.guard";
 
 const routes: Routes = [
   {
@@ -8,6 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [IsAdminGuard],
     loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule)
   }
 ];
